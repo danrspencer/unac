@@ -9,7 +9,7 @@ interface ISquare {
 
   render(): string;
 
-  setWinner(winner: number);
+  setWinner(winner: number): bool;
 
   getWinner(): number;
 

@@ -18,16 +18,24 @@ class Square implements  ISquare {
     this.id = id;
 
     this.onWinnerChanged = new TypedEvent();
+
+    this._winner = 0;
   }
 
   public render(): string {
     return '';
   }
 
-  public setWinner(winner: number) {
+  public setWinner(winner: number): bool {
 
-    this._winner = winner;
-    this.onWinnerChanged.trigger();
+    if (this._winner === 0) {
+      this._winner = winner;
+      this.onWinnerChanged.trigger();
+
+      return true;
+    }
+
+    return false;
   }
 
   public getWinner(): number {

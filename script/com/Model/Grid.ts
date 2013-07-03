@@ -21,7 +21,7 @@ class Grid implements IGrid, ISquare {
 
   private _squares: ISquare[];
 
-  // Offers a way to use the grid interface on children
+  // Offers a way to use the grid interface on child grids (squares)
   private _grids: IGrid[];
 
   private _template: string;
@@ -94,9 +94,11 @@ class Grid implements IGrid, ISquare {
     return this._squares[id];
   }
 
-  public setWinner(winner: number) {
+  public setWinner(winner: number): bool {
 
     console.log("Unable to set winner directly on a grid object.");
+
+    return false;
   }
 
   public getWinner(): number {

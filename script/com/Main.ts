@@ -69,9 +69,11 @@ class Main {
 
     var square = this.getEventSquare(event);
 
-    square.setWinner(this._player1Turn ? 1 : 2);
+    var winnerSet = square.setWinner(this._player1Turn ? 1 : 2);
 
-    this._player1Turn = !this._player1Turn;
+    if (winnerSet === true) {
+      this._player1Turn = !this._player1Turn;
+    }
   }
 
   private getEventSquare(event: JQueryMouseEventObject): ISquare {

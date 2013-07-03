@@ -1,4 +1,4 @@
-/// <reference path="../Helper/IEvent.ts" />
+/// <reference path="IEvent.ts" />
 
 class TypedEvent implements IEvent {
   // Private member vars

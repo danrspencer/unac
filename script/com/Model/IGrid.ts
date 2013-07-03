@@ -1,7 +1,8 @@
 /// <reference path="ISquare.ts" />
+/// <reference path="Square.ts" />
 
 interface IGrid {
 
-  squares: ISquare[];
+  getSquareById(id: string): ISquare;
 
 }

@@ -10,7 +10,7 @@ class Main {
 
   private _player1Turn = true;
 
-  private _player1Color = "rgba(255, 0, 0, 0.5)";
+  private _player1Color = "";
 
   private _player2Color = "rgba(0, 0, 255, 0.5)";
 
@@ -22,83 +22,27 @@ class Main {
 
   public render(ultimateness: number) {
 
-    this._grid = new Grid("1", ultimateness);
+    this._grid = new Grid("", ultimateness);
 
-    /*var grids = this.renderGrids(ultimateness);
+    var gridHtml = this._grid.render();
 
-    $('#board').html(grid);
+    var $board = $('#board');
 
-    this.bindEvents();*/
-  }
+    $board.html(gridHtml);
 
-  /*private renderGrid(grid: Grid, targetDepth: number, depth: number): string[] {
-
-    var content: Array;
-
-    if (depth == targetDepth) {
-      content = new Array();
-    } else {
-
-      var grids =
-
-    }
-
-    var template = _.template('<table class="grid <%= baseLevel %>">' +
-                                 '<tr>' +
-                                   '<td class="square top left"><%= content[0] %></td>' +
-                                   '<td class="square top center"><%= content[1] %></td>' +
-                                   '<td class="square top right"><%= content[2] %></td>' +
-                                 '</tr>' +
-                                 '<tr>' +
-                                   '<td class="square middle left"><%= content[3] %></td>' +
-                                   '<td class="square middle center"><%= content[4] %></td>' +
-                                   '<td class="square middle right"><%= content[5] %></td>' +
-                                 '</tr>' +
-                                 '<tr>' +
-                                   '<td class="square bottom left"><%= content[6] %></td>' +
-                                   '<td class="square bottom center"><%= content[7] %></td>' +
-                                   '<td class="square bottom right"><%= content[8] %></td>' +
-                                 '</tr>' +
-                              '</table>');
-
-    return template(
-      {
-        content: content,
-        baseLevel: baseLevel ? this._baseLevelClass : ""
-      }
-    );
-  }*/
-
-  private generateGridData(childData: Array) {
-
-    var gridData = new Array();
-
-    for(var g = 0; g < 9; g++) {
-
-    }
-  }
-
-  private getSquareCoordinates($element: JQuery, currentAddress: string) {
-    var colIndex = $element.index();
-    var rowIndex = $element.parent().index();
-    var gridIndex = (colIndex + (rowIndex * 3));
+    $board.mouseover((event) => this.onSquareMouseover(event))
+          .mouseout((event) => this.onSquareMouseout(event))
+          .click((event) => this.onSquareClicked(event));
   }
 
   private getCurrentPlayerColor(): string {
     return this._player1Turn ? this._player1Color : this._player2Color;
   }
 
-  // Event handlers
-  private bindEvents() {
-
-    $("." + this._baseLevelClass + " td")
-      .mouseover((event) => this.onSquareMouseover(event))
-      .mouseout((event) => this.onSquareMouseout(event))
-      .click((event) => this.onSquareClicked(event));
-
-  }
-
   private onSquareMouseover(event: JQueryMouseEventObject) {
+
+
+    return;
     var $el = $(event.target);
 
     if ($el.attr("rel") !== "taken") {
@@ -109,6 +53,9 @@ class Main {
   }
 
   private onSquareMouseout(event: JQueryMouseEventObject) {
+
+
+    return;
     var $el = $(event.target);
 
     if ($el.attr("rel") !== "taken") {
@@ -119,16 +66,20 @@ class Main {
   }
 
   private onSquareClicked(event: JQueryMouseEventObject) {
-    var $el = $(event.target);
 
-    $el.attr("rel", "taken");
+    var square = this.getEventSquare(event);
 
-    $el = $el.parent().parent().parent().parent();
-    $el.css("background-color", this.getCurrentPlayerColor());
-
-    $el = $el.parent().parent().parent().parent();
-    $el.css("background-color", this.getCurrentPlayerColor());
+    square.setWinner(this._player1Turn ? 1 : 2);
 
     this._player1Turn = !this._player1Turn;
   }
+
+  private getEventSquare(event: JQueryMouseEventObject): ISquare {
+    var squareId = String($(event.toElement).data("square"));
+
+    var square = this._grid.getSquareById(squareId);
+
+    return square;
+  }
+
 }

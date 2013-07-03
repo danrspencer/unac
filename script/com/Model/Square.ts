@@ -1,19 +1,37 @@
+/// <reference path="../../vendor/underscore.d.ts" />
+/// <reference path="../../vendor/underscore-typed.d.ts" />
+/// <reference path="../../vendor/jquery.d.ts" />
+
 /// <reference path="ISquare.ts" />
 
-/// <reference path="Helper/EventHandler.ts" />
+/// <reference path="../Helper/TypedEvent.ts" />
 
 class Square implements  ISquare {
 
   public id: string;
 
-  public winner: number;
+  public onWinnerChanged: IEvent;
 
-  public onWinnerChanged: EventHandler;
+  private _winner: number;
 
   constructor(id: string) {
     this.id = id;
 
-    this.onWinnerChanged = new EventHandler();
+    this.onWinnerChanged = new TypedEvent();
+  }
+
+  public render(): string {
+    return '';
+  }
+
+  public setWinner(winner: number) {
+
+    this._winner = winner;
+    this.onWinnerChanged.trigger();
+  }
+
+  public getWinner(): number {
+    return this._winner
   }
 
 }

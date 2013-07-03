@@ -5,8 +5,12 @@ interface ISquare {
 
   id: string;
 
-  winner: number;
-
   onWinnerChanged: IEvent;
+
+  render(): string;
+
+  setWinner(winner: number);
+
+  getWinner(): number;
 
 }

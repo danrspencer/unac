@@ -1,11 +1,11 @@
 /// <reference path="IGrid.ts" />
-/// <reference path="../Helper/IEvent.ts" />
+/// <reference path="../Helper/IMoveMadeEvent.ts" />
 
 interface ISquare {
 
   id: string;
 
-  onWinnerChanged: IEvent;
+  moveMade: IMoveMadeEvent;
 
   render(): string;
 

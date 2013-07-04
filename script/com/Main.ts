@@ -42,7 +42,7 @@ class Main {
     return;
     var $el = $(event.target);
 
-    if ($el.attr("rel") !== "taken") {
+    if ($el.attr("rel") != "taken") {
       $el.animate({
         backgroundColor: this.getCurrentPlayerColor()
       });
@@ -55,7 +55,7 @@ class Main {
     return;
     var $el = $(event.target);
 
-    if ($el.attr("rel") !== "taken") {
+    if ($el.attr("rel") != "taken") {
       $el.animate({
         backgroundColor: "rgba(255, 255, 255, 0.5)"
       });
@@ -66,20 +66,20 @@ class Main {
 
     var square = this.getEventSquare(event);
 
-    if (this._currentPlayGridId !== "") {
+    if (this._currentPlayGridId != "") {
 
       var gridId = square.id.substr(0, square.id.length - 1);
 
-      if (this._currentPlayGridId !== gridId) {
+      if (this._currentPlayGridId != gridId) {
 
-        alert('Invalid move.');
+        console.log('Invalid move.');
         return;
       }
     }
 
     var winnerSet = square.setWinner(this._player1Turn ? 1 : 2);
 
-    if (winnerSet === true) {
+    if (winnerSet == true) {
       this._player1Turn = !this._player1Turn;
     }
   }
@@ -102,7 +102,7 @@ class Main {
 
     var $td = $('td');
 
-    if (this._grid.isGridFull(id) === true) {
+    if (this._grid.isGridFull(id) == true) {
       this._currentPlayGridId = "";
 
       $td.addClass("activeSquare");

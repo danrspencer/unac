@@ -5,4 +5,6 @@ interface IGrid {
 
   getSquareById(id: string): ISquare;
 
+  isGridFull(id: string): bool;
+
 }

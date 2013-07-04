@@ -4,20 +4,21 @@
 
 /// <reference path="ISquare.ts" />
 
+/// <reference path="../Helper/IMoveMadeEvent.ts" />
 /// <reference path="../Helper/TypedEvent.ts" />
 
 class Square implements  ISquare {
 
   public id: string;
 
-  public onWinnerChanged: IEvent;
+  public moveMade: IMoveMadeEvent;
 
   private _winner: number;
 
   constructor(id: string) {
     this.id = id;
 
-    this.onWinnerChanged = new TypedEvent();
+    this.moveMade = new TypedEvent();
 
     this._winner = 0;
   }
@@ -30,7 +31,13 @@ class Square implements  ISquare {
 
     if (this._winner === 0) {
       this._winner = winner;
-      this.onWinnerChanged.trigger();
+
+      var parentParentId = this.id.substr(0, this.id.length-2);
+      var squareId = this.id.substr(this.id.length-1);
+
+      var nextGridId = parentParentId + squareId;
+
+      this.moveMade.trigger(this.id, winner, nextGridId);
 
       return true;
     }

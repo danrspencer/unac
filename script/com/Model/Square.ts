@@ -29,7 +29,7 @@ class Square implements  ISquare {
 
   public setWinner(winner: number): bool {
 
-    if (this._winner === 0) {
+    if (this._winner == 0) {
       this._winner = winner;
 
       var parentParentId = this.id.substr(0, this.id.length-2);

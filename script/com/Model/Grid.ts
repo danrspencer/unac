@@ -116,30 +116,29 @@ class Grid implements IGrid, ISquare {
         square = new Square(squareId);
       }
 
-      square.moveMade.add((id, winner, nextGridId) => this.onSquareWinnerChanged(id, winner, nextGridId));
+      square.moveMade.add((id, winner, nextGridId) => this.onMoveMade(id, winner, nextGridId));
 
       this._squares.push(square);
     }
   }
 
-  private onSquareWinnerChanged(id: string, winner: number, nextGridId: string) {
+  private onMoveMade(id: string, winner: number, nextGridId: string) {
 
     var $square = $('*[data-square="' + id + '"]');
 
-    if (winner === 1) {
+    if (winner == 1) {
       $square.removeClass("unowned");
       $square.addClass("p1owned");
-    } else if (winner === 2) {
+    } else if (winner == 2) {
       $square.removeClass("unowned");
       $square.addClass("p2owned");
     }
 
-    if (this._winner === 0) {
+    if (this._winner == 0) {
 
-      var winner = this.checkWinner();
+      this._winner = this.checkWinner();
 
-      if (winner > 0) {
-        this._winner = winner;
+      if (this._winner > 0) {
 
         $('*[data-square="' + this.id + '"] > table > tbody > tr > td').removeClass("top")
                                                                        .removeClass("bottom")
@@ -152,7 +151,7 @@ class Grid implements IGrid, ISquare {
       }
     }
 
-    this.moveMade.trigger(this.id, winner, nextGridId);
+    this.moveMade.trigger(this.id, this._winner, nextGridId);
   }
 
   private checkWinner() {
@@ -174,9 +173,9 @@ class Grid implements IGrid, ISquare {
       var square2Winnner = this._squares[winningGrid[1]].getWinner();
       var square3Winnner = this._squares[winningGrid[2]].getWinner();
 
-      if (square1Winnner !== 0 &&
-          square1Winnner === square2Winnner &&
-          square2Winnner === square3Winnner) {
+      if (square1Winnner != 0 &&
+          square1Winnner == square2Winnner &&
+          square2Winnner == square3Winnner) {
 
         return this._squares[winningGrid[0]].getWinner();
       }
@@ -187,7 +186,7 @@ class Grid implements IGrid, ISquare {
 
   private checkFull() {
     for(var s = 0; s < this._squares.length; s++) {
-      if (this._squares[s].getWinner() === 0) {
+      if (this._squares[s].getWinner() == 0) {
         return false;
       }
     }

@@ -55,8 +55,8 @@
   // backwards-compatibility for the old `require()` API. If we're in
   // the browser, add `_` as a global object via a string identifier,
   // for Closure Compiler "advanced" mode.
-  if (typeof exports !== 'undefined') {
-    if (typeof module !== 'undefined' && module.exports) {
+  if (typeof exports != 'undefined') {
+    if (typeof module != 'undefined' && module.exports) {
       exports = module.exports = _;
     }
     exports._ = _;
@@ -135,7 +135,7 @@
       return initial ? obj.reduceRight(iterator, memo) : obj.reduceRight(iterator);
     }
     var length = obj.length;
-    if (length !== +length) {
+    if (length != +length) {
       var keys = _.keys(obj);
       length = keys.length;
     }
@@ -242,7 +242,7 @@
     if (_.isEmpty(attrs)) return first ? null : [];
     return _[first ? 'find' : 'filter'](obj, function(value) {
       for (var key in attrs) {
-        if (attrs[key] !== value[key]) return false;
+        if (attrs[key] != value[key]) return false;
       }
       return true;
     });
@@ -314,7 +314,7 @@
     }).sort(function(left, right) {
         var a = left.criteria;
         var b = right.criteria;
-        if (a !== b) {
+        if (a != b) {
           if (a > b || a === void 0) return 1;
           if (a < b || b === void 0) return -1;
         }
@@ -456,7 +456,7 @@
     var results = [];
     var seen = [];
     each(initial, function(value, index) {
-      if (isSorted ? (!index || seen[seen.length - 1] !== value) : !_.contains(seen, value)) {
+      if (isSorted ? (!index || seen[seen.length - 1] != value) : !_.contains(seen, value)) {
         seen.push(value);
         results.push(array[index]);
       }
@@ -727,7 +727,7 @@
   // Retrieve the names of an object's properties.
   // Delegates to **ECMAScript 5**'s native `Object.keys`
   _.keys = nativeKeys || function(obj) {
-    if (obj !== Object(obj)) throw new TypeError('Invalid object');
+    if (obj != Object(obj)) throw new TypeError('Invalid object');
     var keys = [];
     for (var key in obj) if (_.has(obj, key)) keys[keys.length] = key;
     return keys;
@@ -826,7 +826,7 @@
   var eq = function(a, b, aStack, bStack) {
     // Identical objects are equal. `0 === -0`, but they aren't identical.
     // See the Harmony `egal` proposal: http://wiki.ecmascript.org/doku.php?id=harmony:egal.
-    if (a === b) return a !== 0 || 1 / a == 1 / b;
+    if (a === b) return a != 0 || 1 / a == 1 / b;
     // A strict comparison is necessary because `null == undefined`.
     if (a == null || b == null) return a === b;
     // Unwrap any wrapped objects.
@@ -886,7 +886,7 @@
       // Objects with different constructors are not equivalent, but `Object`s
       // from different frames are.
       var aCtor = a.constructor, bCtor = b.constructor;
-      if (aCtor !== bCtor && !(_.isFunction(aCtor) && (aCtor instanceof aCtor) &&
+      if (aCtor != bCtor && !(_.isFunction(aCtor) && (aCtor instanceof aCtor) &&
         _.isFunction(bCtor) && (bCtor instanceof bCtor))) {
         return false;
       }
@@ -959,7 +959,7 @@
   }
 
   // Optimize `isFunction` if appropriate.
-  if (typeof (/./) !== 'function') {
+  if (typeof (/./) != 'function') {
     _.isFunction = function(obj) {
       return typeof obj === 'function';
     };

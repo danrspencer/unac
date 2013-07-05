@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <link href="style/style.css" media="all" rel="stylesheet" type="text/css" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+    <script language="javascript" type="text/javascript" src="script/vendor/underscore.js"></script>
+
+    <script language="javascript" type="text/javascript" src="script/com/Helper/TypedEvent.js"></script>
+
+    <script language="javascript" type="text/javascript" src="script/com/Model/Grid.js"></script>
+    <script language="javascript" type="text/javascript" src="script/com/Model/Square.js"></script>
+
+    <script language="javascript" type="text/javascript" src="script/com/Main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var main = new Main();
+            main.render(2);
+        });
+    </script>
+</head>
+<body>
+
+    <div id="board">
+        Board goes here!
+    </div>
+
+    <div id="scoreBoard">
+        <div id="p1"><input type="text" value="Player 1" /></div>
+        <div id="p2"><input type="text" value="Player 2" /></div>
+    </div>
+
+</body>
+</html>

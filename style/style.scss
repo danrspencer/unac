@@ -1,5 +1,19 @@
 /* style.css */
 
+#board {
+  float: left;
+}
+
+#scoreBoard {
+  float: left;
+  margin-top: 20px;
+
+
+  div {
+    padding: 15px;
+  }
+}
+
 .grid {
   min-width: 50px;
   min-height: 50px;

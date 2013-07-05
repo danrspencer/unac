@@ -4,6 +4,8 @@
 
 /// <reference path="Model/Grid.ts" />
 
+/// <reference path="Helper/SaveParser.ts" />
+
 class Main {
 
   private _player1Turn = true;
@@ -33,6 +35,14 @@ class Main {
     this.setActiveGrid(randomStartGrid);
 
     this.updateScoreBoard();
+
+    var saveData = window.location.hash.substr(1);
+
+    if (saveData.length > 1) {
+      var saveParser = new SaveParser();
+
+      saveParser.parseSaveData(saveData);
+    }
   }
 
   private onSquareClicked(event: JQueryMouseEventObject) {
@@ -62,6 +72,8 @@ class Main {
   private onMoveMade(id: string, winner: number, nextGridId: string) {
 
     this.setActiveGrid(nextGridId);
+
+    window.location.hash = this._grid.getStateString();
   }
 
   private getEventSquare(event: JQueryMouseEventObject): ISquare {

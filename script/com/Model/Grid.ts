@@ -94,6 +94,17 @@ class Grid implements IGrid, ISquare {
     return this._winner;
   }
 
+  public getStateString(): string {
+
+    var stateString = String(this._winner);
+
+    for(var s = 0; s < this._squares.length; s++) {
+      stateString += this._squares[s].getStateString();
+    }
+
+    return stateString;
+  }
+
   private generateGrid(id: string, depth: number) {
 
     this._squares = new Array();

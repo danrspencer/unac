@@ -49,4 +49,8 @@ class Square implements  ISquare {
     return this._winner
   }
 
+  public getStateString(): string {
+    return String(this._winner);
+  }
+
 }

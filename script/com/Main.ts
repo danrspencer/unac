@@ -26,41 +26,14 @@ class Main {
     var $board = $('#board');
 
     $board.html(gridHtml);
-
     $board.click((event) => this.onSquareClicked(event));
-    //.mouseover((event) => this.onSquareMouseover(event))
-    //.mouseout((event) => this.onSquareMouseout(event))
 
     var randomStartGrid = this.randomGrid(ultimateness);
 
     this.setActiveGrid(randomStartGrid);
+
+    this.updateScoreBoard();
   }
-
-  /*private onSquareMouseover(event: JQueryMouseEventObject) {
-
-
-    return;
-    var $el = $(event.target);
-
-    if ($el.attr("rel") != "taken") {
-      $el.animate({
-        backgroundColor: this.getCurrentPlayerColor()
-      });
-    }
-  }
-
-  private onSquareMouseout(event: JQueryMouseEventObject) {
-
-
-    return;
-    var $el = $(event.target);
-
-    if ($el.attr("rel") != "taken") {
-      $el.animate({
-        backgroundColor: "rgba(255, 255, 255, 0.5)"
-      });
-    }
-  }*/
 
   private onSquareClicked(event: JQueryMouseEventObject) {
 
@@ -81,6 +54,8 @@ class Main {
 
     if (winnerSet == true) {
       this._player1Turn = !this._player1Turn;
+
+      this.updateScoreBoard();
     }
   }
 
@@ -133,6 +108,16 @@ class Main {
     }
 
     return randomId;
+  }
+
+  private updateScoreBoard() {
+    if (this._player1Turn) {
+      $("#p1").addClass("p1owned");
+      $("#p2").removeClass("p2owned");
+    } else {
+      $("#p1").removeClass("p1owned");
+      $("#p2").addClass("p2owned");
+    }
   }
 
 }

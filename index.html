@@ -26,9 +26,17 @@
 
     <script>
         $(document).ready(function() {
+            var hash = window.location.hash.substr(1);
+
+            if (hash.length === 1) {
+                hash = parseInt(hash);
+            } else {
+                hash = 2;
+            }
+
             var app = new App();
-            app.render(2);
-        });
+            app.render(hash);
+        }); 
     </script>
     <!-- /App stuff -->
 

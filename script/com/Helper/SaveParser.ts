@@ -1,6 +1,8 @@
 
 class SaveParser {
 
+  private _player1Turn: bool;
+
   private _activeGrid: string;
 
   private _gridData: string;
@@ -8,8 +10,9 @@ class SaveParser {
   constructor(save: string) {
     var saveParts = save.split('.');
 
-    this._activeGrid = saveParts[0];
-    this._gridData = saveParts[1];
+    this._player1Turn = saveParts[2] == "1";
+    this._activeGrid = saveParts[3];
+    this._gridData = saveParts[4];
   }
 
   public getDepth(): number {
@@ -24,6 +27,10 @@ class SaveParser {
     }
 
     return depth;
+  }
+
+  public getPlayer1Turn(): bool {
+    return this._player1Turn;
   }
 
   public getGridData(): string {

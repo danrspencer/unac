@@ -28,6 +28,7 @@ class App {
       var saveParser = new SaveParser(saveData);
 
       this._grid = new Grid("", saveParser.getDepth(), saveParser.getGridData());
+      this._player1Turn = saveParser.getPlayer1Turn();
 
       activeGrid = saveParser.getActiveGrid();
     } else {
@@ -80,7 +81,9 @@ class App {
 
     this.setActiveGrid(nextGridId);
 
-    window.location.hash = this._grid.getStateString();
+    var playerTurn = this._player1Turn ? 2 : 1;
+
+    window.location.hash = "p1.p2." + playerTurn + "." + nextGridId + "." + this._grid.getStateString();
   }
 
   private getEventSquare(event: JQueryMouseEventObject): ISquare {

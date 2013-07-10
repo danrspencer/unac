@@ -1,10 +1,26 @@
-var Main = (function () {
-    function Main() {
+var App = (function () {
+    function App() {
         this._player1Turn = true;
     }
-    Main.prototype.render = function (ultimateness) {
+    App.prototype.render = function (ultimateness) {
         var _this = this;
-        this._grid = new Grid("", ultimateness);
+        var saveData = window.location.hash.substr(1);
+
+        var activeGrid;
+
+        if (saveData.length > 1) {
+            var saveParser = new SaveParser(saveData);
+
+            this._grid = new Grid("", saveParser.getDepth(), saveParser.getGridData());
+            this._player1Turn = saveParser.getPlayer1Turn();
+
+            activeGrid = saveParser.getActiveGrid();
+        } else {
+            this._grid = new Grid("", ultimateness, "");
+
+            activeGrid = this.randomGrid(ultimateness);
+        }
+
         this._grid.moveMade.add(function (id, winner, nextGridId) {
             return _this.onMoveMade(id, winner, nextGridId);
         });
@@ -18,14 +34,12 @@ var Main = (function () {
             return _this.onSquareClicked(event);
         });
 
-        var randomStartGrid = this.randomGrid(ultimateness);
-
-        this.setActiveGrid(randomStartGrid);
+        this.setActiveGrid(activeGrid);
 
         this.updateScoreBoard();
     };
 
-    Main.prototype.onSquareClicked = function (event) {
+    App.prototype.onSquareClicked = function (event) {
         var square = this.getEventSquare(event);
 
         if (this._currentPlayGridId != "") {
@@ -46,11 +60,15 @@ var Main = (function () {
         }
     };
 
-    Main.prototype.onMoveMade = function (id, winner, nextGridId) {
+    App.prototype.onMoveMade = function (id, winner, nextGridId) {
         this.setActiveGrid(nextGridId);
+
+        var playerTurn = this._player1Turn ? 2 : 1;
+
+        window.location.hash = "p1.p2." + playerTurn + "." + nextGridId + "." + this._grid.getStateString();
     };
 
-    Main.prototype.getEventSquare = function (event) {
+    App.prototype.getEventSquare = function (event) {
         var squareId = String($(event.toElement).data("square"));
 
         var square = this._grid.getSquareById(squareId);
@@ -58,7 +76,7 @@ var Main = (function () {
         return square;
     };
 
-    Main.prototype.setActiveGrid = function (id) {
+    App.prototype.setActiveGrid = function (id) {
         this._currentPlayGridId = id;
 
         var $td = $('td');
@@ -84,7 +102,7 @@ var Main = (function () {
         }
     };
 
-    Main.prototype.randomGrid = function (depth, currentId) {
+    App.prototype.randomGrid = function (depth, currentId) {
         var randomId = String(Math.round(Math.random() * 8));
 
         if (depth > 1) {
@@ -94,7 +112,7 @@ var Main = (function () {
         return randomId;
     };
 
-    Main.prototype.updateScoreBoard = function () {
+    App.prototype.updateScoreBoard = function () {
         if (this._player1Turn) {
             $("#p1").addClass("p1owned");
             $("#p2").removeClass("p2owned");
@@ -103,6 +121,6 @@ var Main = (function () {
             $("#p2").addClass("p2owned");
         }
     };
-    return Main;
+    return App;
 })();
-//@ sourceMappingURL=Main.js.map
+//@ sourceMappingURL=App.js.map

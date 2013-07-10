@@ -1,15 +1,21 @@
 var Grid = (function () {
-    function Grid(id, depth) {
+    function Grid(id, depth, saveData) {
         this.id = id;
 
         this.moveMade = new TypedEvent();
 
-        this._winner = 0;
+        if (saveData.length == 0) {
+            this._winner = 0;
+        } else {
+            this._winner = parseInt(saveData.substr(0, 1));
 
-        this.generateGrid(id, depth);
+            saveData = saveData.substr(1);
+        }
+
+        this.generateGrid(id, depth, saveData);
     }
     Grid.prototype.render = function () {
-        var template = _.template('<table class="grid">' + '<tr>' + '<td data-square="<%= content[0].id %>" class="square top left unowned"><%= content[0].render() %></td>' + '<td data-square="<%= content[1].id %>" class="square top center unowned"><%= content[1].render() %></td>' + '<td data-square="<%= content[2].id %>" class="square top right unowned"><%= content[2].render() %></td>' + '</tr>' + '<tr>' + '<td data-square="<%= content[3].id %>" class="square left unowned"><%= content[3].render() %></td>' + '<td data-square="<%= content[4].id %>" class="square center unowned"><%= content[4].render() %></td>' + '<td data-square="<%= content[5].id %>" class="square right unowned"><%= content[5].render() %></td>' + '</tr>' + '<tr>' + '<td data-square="<%= content[6].id %>" class="square bottom left unowned"><%= content[6].render() %></td>' + '<td data-square="<%= content[7].id %>" class="square bottom center unowned"><%= content[7].render() %></td>' + '<td data-square="<%= content[8].id %>" class="square bottom right unowned"><%= content[8].render() %></td>' + '</tr>' + '</table>');
+        var template = _.template('<table class="grid">' + '<tr>' + '<td data-square="<%= content[0].id %>" class="square top left <%= content[0].getWinner() == 1 ? "p1owned" : (content[0].getWinner() == 2 ? "p2owned" : "unowned") %>">' + '<%= content[0].render() %>' + '</td>' + '<td data-square="<%= content[1].id %>" class="square top <%= content[1].getWinner() == 1 ? "p1owned" : (content[1].getWinner() == 2 ? "p2owned" : "unowned") %>">' + '<%= content[1].render() %>' + '</td>' + '<td data-square="<%= content[2].id %>" class="square top right <%= content[2].getWinner() == 1 ? "p1owned" : (content[2].getWinner() == 2 ? "p2owned" : "unowned") %>">' + '<%= content[2].render() %>' + '</td>' + '</tr>' + '<tr>' + '<td data-square="<%= content[3].id %>" class="square left <%= content[3].getWinner() == 1 ? "p1owned" : (content[3].getWinner() == 2 ? "p2owned" : "unowned") %>">' + '<%= content[3].render() %>' + '</td>' + '<td data-square="<%= content[4].id %>" class="square <%= content[4].getWinner() == 1 ? "p1owned" : (content[4].getWinner() == 2 ? "p2owned" : "unowned") %>">' + '<%= content[4].render() %>' + '</td>' + '<td data-square="<%= content[5].id %>" class="square right <%= content[5].getWinner() == 1 ? "p1owned" : (content[5].getWinner() == 2 ? "p2owned" : "unowned") %>">' + '<%= content[5].render() %>' + '</td>' + '</tr>' + '<tr>' + '<td data-square="<%= content[6].id %>" class="square bottom left <%= content[6].getWinner() == 1 ? "p1owned" : (content[6].getWinner() == 2 ? "p2owned" : "unowned") %>">' + '<%= content[6].render() %>' + '</td>' + '<td data-square="<%= content[7].id %>" class="square bottom <%= content[7].getWinner() == 1 ? "p1owned" : (content[7].getWinner() == 2 ? "p2owned" : "unowned") %>">' + '<%= content[7].render() %>' + '</td>' + '<td data-square="<%= content[8].id %>" class="square bottom right <%= content[8].getWinner() == 1 ? "p1owned" : (content[8].getWinner() == 2 ? "p2owned" : "unowned") %>">' + '<%= content[8].render() %>' + '</td>' + '</tr>' + '</table>');
 
         return template({
             content: this._squares
@@ -48,7 +54,17 @@ var Grid = (function () {
         return this._winner;
     };
 
-    Grid.prototype.generateGrid = function (id, depth) {
+    Grid.prototype.getStateString = function () {
+        var stateString = String(this._winner);
+
+        for (var s = 0; s < this._squares.length; s++) {
+            stateString += this._squares[s].getStateString();
+        }
+
+        return stateString;
+    };
+
+    Grid.prototype.generateGrid = function (id, depth, saveData) {
         var _this = this;
         this._squares = new Array();
         this._grids = new Array();
@@ -59,13 +75,23 @@ var Grid = (function () {
             var square;
 
             if (depth > 0) {
-                var grid = new Grid(squareId, depth - 1);
+                var grid = new Grid(squareId, depth - 1, saveData);
+
+                var saveCrop = 10;
+
+                for (var n = 1; n < depth; n++) {
+                    saveCrop = (saveCrop * 9) + 1;
+                }
+
+                saveData = saveData.substr(saveCrop);
 
                 square = grid;
 
                 this._grids.push(grid);
             } else {
-                square = new Square(squareId);
+                square = new Square(squareId, saveData);
+
+                saveData = saveData.substr(1);
             }
 
             square.moveMade.add(function (id, winner, nextGridId) {

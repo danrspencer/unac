@@ -13,4 +13,6 @@ interface ISquare {
 
   getWinner(): number;
 
+  getStateString(): string;
+
 }

@@ -4,7 +4,9 @@
 
 /// <reference path="Model/Grid.ts" />
 
-class Main {
+/// <reference path="Helper/SaveParser.ts" />
+
+class App {
 
   private _player1Turn = true;
 
@@ -18,7 +20,24 @@ class Main {
 
   public render(ultimateness: number) {
 
-    this._grid = new Grid("", ultimateness);
+    var saveData = window.location.hash.substr(1);
+
+    var activeGrid: string;
+
+    if (saveData.length > 1) {
+      var saveParser = new SaveParser(saveData);
+
+      this._grid = new Grid("", saveParser.getDepth(), saveParser.getGridData());
+      this._player1Turn = saveParser.getPlayer1Turn();
+
+      activeGrid = saveParser.getActiveGrid();
+    } else {
+      this._grid = new Grid("", ultimateness, "");
+
+      activeGrid = this.randomGrid(ultimateness);
+    }
+
+
     this._grid.moveMade.add((id, winner, nextGridId) => this.onMoveMade(id, winner, nextGridId));
 
     var gridHtml = this._grid.render();
@@ -28,11 +47,10 @@ class Main {
     $board.html(gridHtml);
     $board.click((event) => this.onSquareClicked(event));
 
-    var randomStartGrid = this.randomGrid(ultimateness);
-
-    this.setActiveGrid(randomStartGrid);
+    this.setActiveGrid(activeGrid);
 
     this.updateScoreBoard();
+
   }
 
   private onSquareClicked(event: JQueryMouseEventObject) {
@@ -62,6 +80,10 @@ class Main {
   private onMoveMade(id: string, winner: number, nextGridId: string) {
 
     this.setActiveGrid(nextGridId);
+
+    var playerTurn = this._player1Turn ? 2 : 1;
+
+    window.location.hash = "p1.p2." + playerTurn + "." + nextGridId + "." + this._grid.getStateString();
   }
 
   private getEventSquare(event: JQueryMouseEventObject): ISquare {

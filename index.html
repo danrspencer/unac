@@ -21,13 +21,13 @@
     <script language="javascript" type="text/javascript" src="unac/script/com/Model/Grid.js"></script>
     <script language="javascript" type="text/javascript" src="unac/script/com/Model/Square.js"></script>
 
-    <script language="javascript" type="text/javascript" src="unac/script/com/Main.js"></script>
+    <script language="javascript" type="text/javascript" src="unac/script/com/App.js"></script>
 
 
     <script>
         $(document).ready(function() {
-            var main = new Main();
-            main.render(2);
+            var app = new App();
+            app.render(2);
         });
     </script>
     <!-- /App stuff -->
@@ -71,6 +71,10 @@
           How ultimate do you want it? 
           <input id="ultimateInput" type="number" value="2" style="width: 30px" /> 
           <button id="buttonGo">Go</button>
+        </p>
+        
+        <p>
+          To save your game, simply bookmark the page at the end of your current session. Returning to that bookmark will reload your game state.
         </p>
 
         <div style="height: 700px;">

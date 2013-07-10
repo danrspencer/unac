@@ -1,10 +1,14 @@
 var Square = (function () {
-    function Square(id) {
+    function Square(id, saveData) {
         this.id = id;
 
         this.moveMade = new TypedEvent();
 
-        this._winner = 0;
+        if (saveData.length == 0) {
+            this._winner = 0;
+        } else {
+            this._winner = parseInt(saveData.substr(0, 1));
+        }
     }
     Square.prototype.render = function () {
         return '';
@@ -29,6 +33,10 @@ var Square = (function () {
 
     Square.prototype.getWinner = function () {
         return this._winner;
+    };
+
+    Square.prototype.getStateString = function () {
+        return String(this._winner);
     };
     return Square;
 })();

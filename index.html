@@ -16,6 +16,7 @@
 
     <script language="javascript" type="text/javascript" src="unac/script/vendor/underscore.js"></script>
 
+    <script language="javascript" type="text/javascript" src="script/com/Helper/SaveParser.js"></script>
     <script language="javascript" type="text/javascript" src="unac/script/com/Helper/TypedEvent.js"></script>
 
     <script language="javascript" type="text/javascript" src="unac/script/com/Model/Grid.js"></script>
@@ -29,7 +30,7 @@
             var hash = window.location.hash.substr(1);
 
             if (hash.length === 1) {
-                hash = parseInt(hash);
+                hash = parseInt(hash); 
             } else {
                 hash = 2;
             }

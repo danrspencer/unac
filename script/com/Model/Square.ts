@@ -15,12 +15,16 @@ class Square implements  ISquare {
 
   private _winner: number;
 
-  constructor(id: string) {
+  constructor(id: string, saveData: string) {
     this.id = id;
 
     this.moveMade = new TypedEvent();
 
-    this._winner = 0;
+    if (saveData.length == 0) {
+      this._winner = 0;
+    } else {
+      this._winner = parseInt(saveData.substr(0, 1));
+    }
   }
 
   public render(): string {

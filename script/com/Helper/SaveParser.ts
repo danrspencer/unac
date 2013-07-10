@@ -1,14 +1,37 @@
 
 class SaveParser {
 
-  public parseSaveData(save: string): Array {
+  private _activeGrid: string;
 
-    var parsedData = new Array();
+  private _gridData: string;
 
-    console.log(save.length);
+  constructor(save: string) {
+    var saveParts = save.split('.');
 
-    return parsedData;
+    this._activeGrid = saveParts[0];
+    this._gridData = saveParts[1];
   }
 
+  public getDepth(): number {
+
+    var expectedLength = 10;
+    var depth = 0;
+
+    while (expectedLength != this._gridData.length) {
+      depth++;
+
+      expectedLength = (expectedLength * 9) + 1;
+    }
+
+    return depth;
+  }
+
+  public getGridData(): string {
+    return this._gridData;
+  }
+
+  public getActiveGrid(): string {
+    return this._activeGrid;
+  }
 
 }

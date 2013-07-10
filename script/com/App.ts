@@ -6,7 +6,7 @@
 
 /// <reference path="Helper/SaveParser.ts" />
 
-class Main {
+class App {
 
   private _player1Turn = true;
 
@@ -20,7 +20,23 @@ class Main {
 
   public render(ultimateness: number) {
 
-    this._grid = new Grid("", ultimateness);
+    var saveData = window.location.hash.substr(1);
+
+    var activeGrid: string;
+
+    if (saveData.length > 1) {
+      var saveParser = new SaveParser(saveData);
+
+      this._grid = new Grid("", saveParser.getDepth(), saveParser.getGridData());
+
+      activeGrid = saveParser.getActiveGrid();
+    } else {
+      this._grid = new Grid("", ultimateness, "");
+
+      activeGrid = this.randomGrid(ultimateness);
+    }
+
+
     this._grid.moveMade.add((id, winner, nextGridId) => this.onMoveMade(id, winner, nextGridId));
 
     var gridHtml = this._grid.render();
@@ -30,19 +46,10 @@ class Main {
     $board.html(gridHtml);
     $board.click((event) => this.onSquareClicked(event));
 
-    var randomStartGrid = this.randomGrid(ultimateness);
-
-    this.setActiveGrid(randomStartGrid);
+    this.setActiveGrid(activeGrid);
 
     this.updateScoreBoard();
 
-    var saveData = window.location.hash.substr(1);
-
-    if (saveData.length > 1) {
-      var saveParser = new SaveParser();
-
-      saveParser.parseSaveData(saveData);
-    }
   }
 
   private onSquareClicked(event: JQueryMouseEventObject) {

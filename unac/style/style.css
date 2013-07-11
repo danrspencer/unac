@@ -22,7 +22,8 @@
   .grid .square {
     border: solid 1px black;
     width: 33%;
-    height: 33%; }
+    height: 33%;
+    padding: 0px; }
     .grid .square .top {
       border-top-color: rgba(255, 255, 255, 0); }
     .grid .square .bottom {

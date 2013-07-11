@@ -28,7 +28,7 @@ class Square implements  ISquare {
   }
 
   public render(): string {
-    return '';
+    return '&nbsp;';
   }
 
   public setWinner(winner: number): bool {

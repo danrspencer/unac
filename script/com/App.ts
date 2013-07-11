@@ -87,7 +87,7 @@ class App {
   }
 
   private getEventSquare(event: JQueryMouseEventObject): ISquare {
-    var squareId = String($(event.toElement).data("square"));
+    var squareId = String($(event.target).data("square"));
 
     var square = this._grid.getSquareById(squareId);
 

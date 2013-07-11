@@ -30,6 +30,11 @@
   border-collapse: collapse;
   border-spacing: 0;
 
+  padding: 0px;
+
+  line-height: 15px;
+  font-size: 0;
+
   .square {
     border: solid 1px black;
 
@@ -37,6 +42,7 @@
     height: 33%;
 
     padding: 0px;
+    margin: 0px;
 
     .top {
       border-top-color: rgba(255, 255, 255, 0);

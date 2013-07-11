@@ -18,12 +18,16 @@
   min-height: 50px;
   margin: 10px;
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+  padding: 0px;
+  line-height: 15px;
+  font-size: 0; }
   .grid .square {
     border: solid 1px black;
     width: 33%;
     height: 33%;
-    padding: 0px; }
+    padding: 0px;
+    margin: 0px; }
     .grid .square .top {
       border-top-color: rgba(255, 255, 255, 0); }
     .grid .square .bottom {

@@ -11,7 +11,7 @@ var Square = (function () {
         }
     }
     Square.prototype.render = function () {
-        return '';
+        return '&nbsp;';
     };
 
     Square.prototype.setWinner = function (winner) {

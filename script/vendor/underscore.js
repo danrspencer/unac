@@ -846,7 +846,7 @@
         // other numeric values.
         return a != +a ? b != +b : (a == 0 ? 1 / a == 1 / b : a == +b);
       case '[object Date]':
-      case '[object Boolean]':
+      case '[object boolean]':
         // Coerce dates and booleans to numeric primitive values. Dates are compared by their
         // millisecond representations. Note that invalid dates with millisecond representations
         // of `NaN` are not equivalent.
@@ -976,8 +976,8 @@
   };
 
   // Is a given value a boolean?
-  _.isBoolean = function(obj) {
-    return obj === true || obj === false || toString.call(obj) == '[object Boolean]';
+  _.isboolean = function(obj) {
+    return obj === true || obj === false || toString.call(obj) == '[object boolean]';
   };
 
   // Is a given value equal to null?

@@ -31,7 +31,7 @@ class Square implements  ISquare {
     return '&nbsp;';
   }
 
-  public setWinner(winner: number): bool {
+  public setWinner(winner: number): boolean {
 
     if (this._winner == 0) {
       this._winner = winner;

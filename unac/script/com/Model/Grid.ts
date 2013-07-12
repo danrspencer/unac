@@ -95,7 +95,7 @@ class Grid implements IGrid, ISquare {
     return this._squares[id];
   }
 
-  public isGridFull(id: string): bool {
+  public isGridFull(id: string): boolean {
 
     if (id.length >= 1) {
       var nextSquareId = id.substr(0, 1);
@@ -107,7 +107,7 @@ class Grid implements IGrid, ISquare {
     return this.checkFull();
   }
 
-  public setWinner(winner: number): bool {
+  public setWinner(winner: number): boolean {
 
     console.log("Unable to set winner directly on a grid object.");
 

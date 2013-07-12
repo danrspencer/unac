@@ -196,7 +196,7 @@ declare module "underscore" {
         export function isString(object: any): boolean;
         export function isNumber(object: any): boolean;
         export function isFinite(object: any): boolean;
-        export function isBoolean(object: any): boolean;
+        export function isboolean(object: any): boolean;
         export function isDate(object: any): boolean;
         export function isRegExp(object: any): boolean;
         export function isNaN(object: any): boolean;

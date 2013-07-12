@@ -976,7 +976,7 @@
   };
 
 // Populate the class2type map
-  jQuery.each("Boolean Number String Function Array Date RegExp Object Error".split(" "), function(i, name) {
+  jQuery.each("boolean Number String Function Array Date RegExp Object Error".split(" "), function(i, name) {
     class2type[ "[object " + name + "]" ] = name.toLowerCase();
   });
 
@@ -1112,7 +1112,7 @@
         "CHILD": new RegExp( "^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\(" + whitespace +
           "*(even|odd|(([+-]|)(\\d*)n|)" + whitespace + "*(?:([+-]|)" + whitespace +
           "*(\\d+)|))" + whitespace + "*\\)|)", "i" ),
-        "bool": new RegExp( "^(?:" + booleans + ")$", "i" ),
+        "boolean": new RegExp( "^(?:" + booleans + ")$", "i" ),
         // For use in libraries implementing .is()
         // We use this for POS matching in `select`
         "needsContext": new RegExp( "^" + whitespace + "*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\(" +
@@ -1345,7 +1345,7 @@
      * Adds the same handler for all of the specified attrs
      * @param {String} attrs Pipe-separated list of attributes
      * @param {Function} handler The method that will be applied if the test fails
-     * @param {Boolean} test The result of a test. If true, null will be set as the handler in leiu of the specified handler
+     * @param {boolean} test The result of a test. If true, null will be set as the handler in leiu of the specified handler
      */
     function addHandle( attrs, handler, test ) {
       attrs = attrs.split("|");
@@ -1366,7 +1366,7 @@
      * @param {Element} elem
      * @param {String} name
      */
-    function boolHandler( elem, name ) {
+    function booleanHandler( elem, name ) {
       // XML does not need to be checked as this will not be assigned for XML documents
       var val = elem.getAttributeNode( name );
       return val && val.specified ?
@@ -1530,7 +1530,7 @@
 
         // Support: IE<9
         // Use getAttributeNode to fetch booleans when getAttribute lies
-        addHandle( booleans, boolHandler, div.getAttribute("disabled") == null );
+        addHandle( booleans, booleanHandler, div.getAttribute("disabled") == null );
 
         div.className = "i";
         return !div.getAttribute("className");
@@ -1668,7 +1668,7 @@
           div.innerHTML = "<select><option selected=''></option></select>";
 
           // Support: IE8
-          // Boolean attributes and "value" are not treated correctly
+          // boolean attributes and "value" are not treated correctly
           if ( !div.querySelectorAll("[selected]").length ) {
             rbuggyQSA.push( "\\[" + whitespace + "*(?:value|" + booleans + ")" );
           }
@@ -2339,7 +2339,7 @@
           return elem === document.activeElement && (!document.hasFocus || document.hasFocus()) && !!(elem.type || elem.href || ~elem.tabIndex);
         },
 
-        // Boolean properties
+        // boolean properties
         "enabled": function( elem ) {
           return elem.disabled === false;
         },
@@ -4070,7 +4070,7 @@
       return defer.promise( obj );
     }
   });
-  var nodeHook, boolHook,
+  var nodeHook, booleanHook,
     rclass = /[\t\r\n\f]/g,
     rreturn = /\r/g,
     rfocusable = /^(?:input|select|textarea|button|object)$/i,
@@ -4184,7 +4184,7 @@
 
     toggleClass: function( value, stateVal ) {
       var type = typeof value,
-        isBool = typeof stateVal === "boolean";
+        isboolean = typeof stateVal === "boolean";
 
       if ( jQuery.isFunction( value ) ) {
         return this.each(function( i ) {
@@ -4203,7 +4203,7 @@
 
           while ( (className = classNames[ i++ ]) ) {
             // check each className given, space separated list
-            state = isBool ? state : !self.hasClass( className );
+            state = isboolean ? state : !self.hasClass( className );
             self[ state ? "addClass" : "removeClass" ]( className );
           }
 
@@ -4386,7 +4386,7 @@
       if ( nType != 1 || !jQuery.isXMLDoc( elem ) ) {
         name = name.toLowerCase();
         hooks = jQuery.attrHooks[ name ] ||
-          ( jQuery.expr.match.bool.test( name ) ? boolHook : nodeHook );
+          ( jQuery.expr.match.boolean.test( name ) ? booleanHook : nodeHook );
       }
 
       if ( value != undefined ) {
@@ -4424,8 +4424,8 @@
         while ( (name = attrNames[i++]) ) {
           propName = jQuery.propFix[ name ] || name;
 
-          // Boolean attributes get special treatment (#10870)
-          if ( jQuery.expr.match.bool.test( name ) ) {
+          // boolean attributes get special treatment (#10870)
+          if ( jQuery.expr.match.boolean.test( name ) ) {
             // Set corresponding property to false
             if ( getSetInput && getSetAttribute || !ruseDefault.test( name ) ) {
               elem[ propName ] = false;
@@ -4516,7 +4516,7 @@
   });
 
 // Hooks for boolean attributes
-  boolHook = {
+  booleanHook = {
     set: function( elem, value, name ) {
       if ( value === false ) {
         // Remove boolean attributes when set to false
@@ -4533,7 +4533,7 @@
       return name;
     }
   };
-  jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) {
+  jQuery.each( jQuery.expr.match.boolean.source.match( /\w+/g ), function( i, name ) {
     var getter = jQuery.expr.attrHandle[ name ] || jQuery.find.attr;
 
     jQuery.expr.attrHandle[ name ] = getSetInput && getSetAttribute || !ruseDefault.test( name ) ?
@@ -6948,10 +6948,10 @@
       return showHide( this );
     },
     toggle: function( state ) {
-      var bool = typeof state === "boolean";
+      var boolean = typeof state === "boolean";
 
       return this.each(function() {
-        if ( bool ? state : isHidden( this ) ) {
+        if ( boolean ? state : isHidden( this ) ) {
           jQuery( this ).show();
         } else {
           jQuery( this ).hide();

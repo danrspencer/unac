@@ -61,6 +61,11 @@ var App = (function () {
     };
 
     App.prototype.onMoveMade = function (id, winner, nextGridId) {
+        var currentdate = new Date();
+        var datetime = currentdate.getDate() + "/" + (currentdate.getMonth() + 1) + "/" + currentdate.getFullYear() + " " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+
+        document.title = $('#p1 input').val() + ' vs ' + $('#p2 input').val() + ' (' + datetime + ')';
+
         this.setActiveGrid(nextGridId);
 
         var playerTurn = this._player1Turn ? 2 : 1;
@@ -102,11 +107,11 @@ var App = (function () {
         }
     };
 
-    App.prototype.randomGrid = function (depth, currentId) {
+    App.prototype.randomGrid = function (depth) {
         var randomId = String(Math.round(Math.random() * 8));
 
         if (depth > 1) {
-            randomId += this.randomGrid(depth - 1, randomId);
+            randomId += this.randomGrid(depth - 1);
         }
 
         return randomId;

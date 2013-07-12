@@ -1,7 +1,7 @@
 
 class SaveParser {
 
-  private _player1Turn: bool;
+  private _player1Turn: boolean;
 
   private _activeGrid: string;
 
@@ -29,7 +29,7 @@ class SaveParser {
     return depth;
   }
 
-  public getPlayer1Turn(): bool {
+  public getPlayer1Turn(): boolean {
     return this._player1Turn;
   }
 

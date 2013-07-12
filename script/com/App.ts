@@ -16,6 +16,7 @@ class App {
 
   constructor() {
 
+
   }
 
   public render(ultimateness: number) {
@@ -79,6 +80,16 @@ class App {
 
   private onMoveMade(id: string, winner: number, nextGridId: string) {
 
+    var currentdate = new Date();
+    var datetime = currentdate.getDate() + "/"
+      + (currentdate.getMonth()+1)  + "/"
+      + currentdate.getFullYear() + " "
+      + currentdate.getHours() + ":"
+      + currentdate.getMinutes() + ":"
+      + currentdate.getSeconds();
+
+    document.title = $('#p1 input').val() + ' vs ' + $('#p2 input').val() + ' (' + datetime + ')';
+
     this.setActiveGrid(nextGridId);
 
     var playerTurn = this._player1Turn ? 2 : 1;
@@ -121,12 +132,12 @@ class App {
     }
   }
 
-  private randomGrid(depth: number, currentId?: string): string{
+  private randomGrid(depth: number): string{
 
     var randomId = String(Math.round(Math.random()*8));
 
     if (depth > 1) {
-      randomId += this.randomGrid(depth - 1, randomId);
+      randomId += this.randomGrid(depth - 1);
     }
 
     return randomId;

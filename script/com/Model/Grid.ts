@@ -44,35 +44,35 @@ class Grid implements IGrid, ISquare {
   public render(): string {
     var template = _.template('<table class="grid">' +
                                 '<tr>' +
-                                  '<td data-square="<%= content[0].id %>" class="square top left <%= content[0].getWinner() == 1 ? "p1owned" : (content[0].getWinner() == 2 ? "p2owned" : "unowned") %>">' +
+                                  '<td data-square="<%= content[0].id %>" class="square <%= content[0].getWinner() == 1 ? "p1owned" : (content[0].getWinner() == 2 ? "p2owned" : "unowned top left") %>">' +
                                     '<%= content[0].render() %>' +
                                   '</td>' +
-                                  '<td data-square="<%= content[1].id %>" class="square top <%= content[1].getWinner() == 1 ? "p1owned" : (content[1].getWinner() == 2 ? "p2owned" : "unowned") %>">' +
+                                  '<td data-square="<%= content[1].id %>" class="square <%= content[1].getWinner() == 1 ? "p1owned" : (content[1].getWinner() == 2 ? "p2owned" : "unowned top") %>">' +
                                     '<%= content[1].render() %>' +
                                   '</td>' +
-                                  '<td data-square="<%= content[2].id %>" class="square top right <%= content[2].getWinner() == 1 ? "p1owned" : (content[2].getWinner() == 2 ? "p2owned" : "unowned") %>">' +
+                                  '<td data-square="<%= content[2].id %>" class="square <%= content[2].getWinner() == 1 ? "p1owned" : (content[2].getWinner() == 2 ? "p2owned" : "unowned top right") %>">' +
                                     '<%= content[2].render() %>' +
                                   '</td>' +
                                 '</tr>' +
                                 '<tr>' +
-                                  '<td data-square="<%= content[3].id %>" class="square left <%= content[3].getWinner() == 1 ? "p1owned" : (content[3].getWinner() == 2 ? "p2owned" : "unowned") %>">' +
+                                  '<td data-square="<%= content[3].id %>" class="square <%= content[3].getWinner() == 1 ? "p1owned" : (content[3].getWinner() == 2 ? "p2owned" : "unowned left") %>">' +
                                     '<%= content[3].render() %>' +
                                   '</td>' +
                                   '<td data-square="<%= content[4].id %>" class="square <%= content[4].getWinner() == 1 ? "p1owned" : (content[4].getWinner() == 2 ? "p2owned" : "unowned") %>">' +
                                     '<%= content[4].render() %>' +
                                   '</td>' +
-                                  '<td data-square="<%= content[5].id %>" class="square right <%= content[5].getWinner() == 1 ? "p1owned" : (content[5].getWinner() == 2 ? "p2owned" : "unowned") %>">' +
+                                  '<td data-square="<%= content[5].id %>" class="square <%= content[5].getWinner() == 1 ? "p1owned" : (content[5].getWinner() == 2 ? "p2owned" : "unowned right") %>">' +
                                    '<%= content[5].render() %>' +
                                   '</td>' +
                                 '</tr>' +
                                 '<tr>' +
-                                  '<td data-square="<%= content[6].id %>" class="square bottom left <%= content[6].getWinner() == 1 ? "p1owned" : (content[6].getWinner() == 2 ? "p2owned" : "unowned") %>">' +
+                                  '<td data-square="<%= content[6].id %>" class="square <%= content[6].getWinner() == 1 ? "p1owned" : (content[6].getWinner() == 2 ? "p2owned" : "unowned bottom left") %>">' +
                                     '<%= content[6].render() %>' +
                                   '</td>' +
-                                  '<td data-square="<%= content[7].id %>" class="square bottom <%= content[7].getWinner() == 1 ? "p1owned" : (content[7].getWinner() == 2 ? "p2owned" : "unowned") %>">' +
+                                  '<td data-square="<%= content[7].id %>" class="square <%= content[7].getWinner() == 1 ? "p1owned" : (content[7].getWinner() == 2 ? "p2owned" : "unowned bottom") %>">' +
                                     '<%= content[7].render() %>' +
                                   '</td>' +
-                                  '<td data-square="<%= content[8].id %>" class="square bottom right <%= content[8].getWinner() == 1 ? "p1owned" : (content[8].getWinner() == 2 ? "p2owned" : "unowned") %>">' +
+                                  '<td data-square="<%= content[8].id %>" class="square <%= content[8].getWinner() == 1 ? "p1owned" : (content[8].getWinner() == 2 ? "p2owned" : "unowned bottom right") %>">' +
                                     '<%= content[8].render() %>' +
                                   '</td>' +
                                 '</tr>' +
@@ -95,7 +95,7 @@ class Grid implements IGrid, ISquare {
     return this._squares[id];
   }
 
-  public isGridFull(id: string): bool {
+  public isGridFull(id: string): boolean {
 
     if (id.length >= 1) {
       var nextSquareId = id.substr(0, 1);
@@ -107,7 +107,7 @@ class Grid implements IGrid, ISquare {
     return this.checkFull();
   }
 
-  public setWinner(winner: number): bool {
+  public setWinner(winner: number): boolean {
 
     console.log("Unable to set winner directly on a grid object.");
 

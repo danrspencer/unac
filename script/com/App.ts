@@ -10,10 +10,10 @@
 
 export class App {
 
-  private _grid: IGrid;
+  private _gridFactory: IGridFactory;
 
-  constructor(grid: IGrid) {
-    this._grid = grid;
+  constructor(gridFactory: IGridFactory) {
+    this._gridFactory = gridFactory;
   }
 
   public start(depth: number) {

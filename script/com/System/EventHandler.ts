@@ -1,5 +1,6 @@
+/// <reference path="IEventHandler.ts" />
 
-export class EventHandler<TArgs extends Object> {
+export class EventHandler<TArgs extends Object> implements IEventHandler<TArgs> {
 
   private _listeners: any[];
 

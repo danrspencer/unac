@@ -1,36 +1,39 @@
+/// <require path="./IGridFactory.ts" />
+
 /// <require path="../App/Model/IGrid.ts" />
 /// <require path="../App/Model/ISquare.ts" />
 
-import grid = require('../App/Model/Grid');
-import square = require('../App/Model/Square');
+import Grid = require('../App/Model/Grid');
+import Square = require('../App/Model/Square');
 
-import eventHandler = require('../System/EventHandler');
-
-export class GridFactory {
+export class GridFactory implements IGridFactory {
 
   public manufactureGrid(depth: number): IGrid {
 
+    var squares = this.getSquares(depth);
 
+    var grid = new Grid.Grid(squares);
 
+    return grid;
   }
 
   private getSquares(depth: number): ISquare[] {
 
-    var squares = ISquare[9];
-    var squareClass = depth === 0 ? grid.Grid : square.Square;
+    var squares: ISquare[] = new Array(9);
 
     if (depth === 0) {
       for (var s = 0; s <= 8; s++) {
-        squares[s] = new squareClass();
+        squares[s] = new Square.Square();
       }
     } else {
       for (var s = 0; s <= 8; s++) {
-        squares[s] = new squareClass();
+        var childSquares = this.getSquares(depth - 1);
+
+        squares[s] = new Grid.Grid(childSquares);
       }
     }
 
-
-
+    return squares;
   }
 
 }

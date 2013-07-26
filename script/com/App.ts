@@ -12,12 +12,15 @@ export class App {
 
   private _gridFactory: IGridFactory;
 
+  private _grid: IGrid;
+
   constructor(gridFactory: IGridFactory) {
     this._gridFactory = gridFactory;
   }
 
   public start(depth: number) {
 
+    this._grid = this._gridFactory.manufactureGrid(depth);
   }
 
 }

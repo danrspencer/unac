@@ -4,6 +4,6 @@ interface IGrid {
 
   getSquareById(id: string): ISquare;
 
-  isGridFull(id: string): boolean;
+  isGridFull(id: string): boolean; 
 
 }

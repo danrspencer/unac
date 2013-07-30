@@ -1,15 +1,12 @@
-/// <reference path=".././underscore.d.ts" />
-/// <reference path=".././underscore-typed.d.ts" />
+import EventHandler = require('System/Event/EventHandler');
 
-/// <reference path=".././System/IEventHandler.ts" />
-
-/// <reference path=".././Model/IGrid.ts" />
-/// <reference path=".././Model/ISquare.ts" />
+import IGrid = require('Interface/Model/IGrid');
+import ISquare = require('Interface/Model/ISquare');
 
 
 class Grid implements IGrid, ISquare {
 
-  public winnerChanged: IEventHandler<Object>;
+  public winnerChanged: EventHandler.EventHandler<Object>;
 
   constructor(squares: ISquare[]) {
 

@@ -1,6 +1,10 @@
 import IGrid = require('Interface/Model/IGrid');
-import ISquare = require('Interface/Model/Square');
+import ISquare = require('Interface/Model/ISquare');
+import IGridView = require('Interface/View/IGridView');
+import ISquareView = require('Interface/View/ISquareView');
 
+import App = require('App/Model/App');
+import AppView = require('App/View/AppView');
 import Grid = require('App/Model/Grid');
 import GridPresenter = require('App/Presenter/GridPresenter');
 import GridView = require('App/View/GridView');
@@ -10,48 +14,65 @@ import SquareView = require('App/View/SquareView');
 
 class GridFactory {
 
-  public manufactureGrid(depth: number): IGrid {
+  constructor(appModel: App, appView: AppView) {
 
-    var squares = this.getSquares(depth);
-
-    var grid = new Grid(squares);
-
-    return grid;
   }
 
-  private getSquares(depth: number): ISquare[] {
+  public manufactureGrid(depth: number) {
 
-    var squares: ISquare[] = new Array(9);
+    var squareViews: ISquareView[] = new Array(9);
+    var squareModels: ISquare[] = new Array(9);
+
+    this.generateSquares(depth, squareViews, squareModels);
+
+    var gridView = new GridView(squareViews);
+    var grid = new Grid(squareModels);
+
+    var presenter = new GridPresenter(gridView, grid);
+  }
+
+  private generateSquares(depth: number, views: ISquareView[], models: ISquare[]) {
 
     if (depth === 0) {
-      for (var s = 0; s <= 8; s++) {
-        squares[s] = new Square();
-      }
+
+      this.generateTrueSquares(views, models);
+
     } else {
-      for (var s = 0; s <= 8; s++) {
-        var childSquares = this.getSquares(depth - 1);
 
-        squares[s] = new Grid(childSquares);
-      }
+      this.generateGridSquares(depth, views, models);
     }
-
-    return squares;
   }
 
-  private generateSquare(): Square {
+  private generateTrueSquares(views: ISquareView[], models: ISquare[]) {
+    for (var n = 0; n <= 8; n++) {
 
-    var model = new Square();
-    var view = new SquareView();
+      var squareView = new SquareView();
+      var square = new Square();
 
-    var presenter = new SquarePresenter(model, view);
+      var presenter = new SquarePresenter(squareView, square);
 
-
+      views[n] = squareView;
+      models[n] = square;
+    }
   }
 
-  private generateGrid(): Grid {
+  private generateGridSquares(depth: number, views: ISquareView[], models: ISquare[]) {
+    for (var n = 0; n <= 8; n++) {
 
+      var squareViews: ISquareView[] = new Array(9);
+      var squareModels: ISquare[] = new Array(9);
+
+      this.generateSquares(depth - 1, squareViews, squareModels);
+
+      var gridView = new GridView(squareViews);
+      var grid = new Grid(squareModels);
+
+      var presenter = new GridPresenter(gridView, grid);
+
+      views[n] = gridView;
+      models[n] = grid;
+    }
   }
-
 }
 
 export = GridFactory;

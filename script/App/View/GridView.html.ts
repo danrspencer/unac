@@ -1,5 +1,6 @@
-/// <reference path=".././underscore.d.ts" />
-/// <reference path=".././underscore-typed.d.ts" />
+/// <reference path="../../Vendor/jquery.d.ts" />
+/// <reference path="../../Vendor/underscore.d.ts" />
+/// <reference path="../../Vendor/underscore-typed.d.ts" />
 
 var html = '<table class="grid"> \
              <tr> \

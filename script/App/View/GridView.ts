@@ -1,10 +1,10 @@
-/// <reference path=".././underscore.d.ts" />
-/// <reference path=".././jquery.d.ts" />
+/// <reference path="../../Vendor/underscore.d.ts" />
+/// <reference path="../../Vendor/jquery.d.ts" />
 
-/// <reference path=".././View/IGridView.ts" />
-/// <reference path=".././View/ISquareView.ts" />
+import IGridView = require('Interface/View/IGridView');
+import ISquareView = require('Interface/View/ISquareView');
 
-import template = require ('./GridView.html.ts');
+import template = require ('App/View/GridView.html');
 
 class GridView implements IGridView, ISquareView {
 
@@ -12,7 +12,7 @@ class GridView implements IGridView, ISquareView {
 
   }
 
-  public render(container: JQuery) {
+  public render($container: JQuery) {
 
   }
 

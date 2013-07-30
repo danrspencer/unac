@@ -1,1 +1,1 @@
-{"version":3,"file":"SquarePresenter.js","sources":["SquarePresenter.ts"],"names":["SquarePresenter","SquarePresenter.constructor"],"mappings":"AAAA;IACA;QAAAA;;AAECA,QAADA;AAACA,IAADA,CAACA,IAAA;;;;GAEwB"}
+{"version":3,"file":"SquarePresenter.js","sources":["SquarePresenter.ts"],"names":["SquarePresenter","SquarePresenter.constructor"],"mappings":"AAAA;IAAA,aAAwB,UAAkB,CAAE;IAC5C,iBAA4B,cAAqB,CAAE;;IAGnD;QAEEA,yBAAYA,IAAgBA,EAAEA,MAAcA;QAE5CC,CAACA;QAEHD;AAACA,IAADA,CAACA,IAAA;;;;GAEwB"}

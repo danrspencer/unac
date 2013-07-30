@@ -1,6 +1,9 @@
-define(["require", "exports"], function(require, exports) {
+define(["require", "exports", 'App/Model/App', 'App/View/AppView'], function(require, exports, __App__, __AppView__) {
+    var App = __App__;
+    var AppView = __AppView__;
+
     var AppPresenter = (function () {
-        function AppPresenter() {
+        function AppPresenter(view, app) {
         }
         return AppPresenter;
     })();

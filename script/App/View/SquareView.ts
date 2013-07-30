@@ -1,9 +1,9 @@
-/// <reference path=".././underscore.d.ts" />
-/// <reference path=".././jquery.d.ts" />
+/// <reference path="../../Vendor/underscore.d.ts" />
+/// <reference path="../../Vendor/jquery.d.ts" />
 
-/// <reference path=".././View/ISquareView.ts" />
+import ISquareView = require('Interface/View/ISquareView');
 
-import template = require ('./SquareView.html.ts');
+import template = require ('App/View/SquareView.html');
 
 class SquareView implements ISquareView {
 
@@ -11,7 +11,7 @@ class SquareView implements ISquareView {
 
   }
 
-  public render(container: JQuery) {
+  public render($container: JQuery) {
 
   }
 

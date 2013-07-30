@@ -1,1 +1,1 @@
-{"version":3,"file":"AppView.js","sources":["AppView.ts"],"names":[],"mappings":""}
+{"version":3,"file":"AppView.js","sources":["AppView.ts"],"names":["AppView","AppView.constructor","AppView.render"],"mappings":"AAAA;;;IAGA;QAAAA;;AAMCA,QAJCA,2BAAAA,UAAcA,UAAkBA;QAEhCE,CAACA;QAEHF;AAACA,IAADA,CAACA,IAAA;;;;GAEgB"}

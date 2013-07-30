@@ -3,4 +3,4 @@ define(["require", "exports"], function(require, exports) {
 
     
 });
-//@ sourceMappingURL=IGrid.js.map
+//@ sourceMappingURL=ISquareView.js.map

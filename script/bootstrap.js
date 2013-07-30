@@ -1,10 +1,15 @@
-define(["require", "exports", './App/Factory/GridFactory', './App/App'], function(require, exports, __GridFactory__, __App__) {
-    var GridFactory = __GridFactory__;
+define(["require", "exports", 'App/Model/App', 'App/Presenter/AppPresenter', 'App/View/AppView', 'App/Factory/GridFactory'], function(require, exports, __App__, __AppPresenter__, __AppView__, __GridFactory__) {
     var App = __App__;
+    var AppPresenter = __AppPresenter__;
+    var AppView = __AppView__;
+    var GridFactory = __GridFactory__;
 
-    var gridFactory = new GridFactory();
-    var app = new App(gridFactory);
+    var app = new App();
+    var appView = new AppView();
+    var appPresenter = new AppPresenter(appView, app);
 
-    app.start(2);
+    var gridFactory = new GridFactory(app, appView);
+
+    appView.render($('body'));
 });
 //@ sourceMappingURL=bootstrap.js.map

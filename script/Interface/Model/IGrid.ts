@@ -1,4 +1,5 @@
-/// <reference path="ISquare.ts" />
+import ISquare = require('Interface/Model/ISquare');
+
 
 interface IGrid {
 

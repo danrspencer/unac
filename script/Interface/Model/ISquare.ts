@@ -1,4 +1,4 @@
-import EventHandler = require('Com/Event/EventHandler');
+import EventHandler = require('System/Event/EventHandler');
 import WinnerChangedEventArgs = require('App/Event/WinnerChangedEventArgs');
 
 interface ISquare {

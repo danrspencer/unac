@@ -1,10 +1,12 @@
-define(["require", "exports", '../Event/WinnerChangedEventArgs', '../../Com/Event/EventHandler'], function(require, exports, __WinnerChangedEventArgs__, __EventHandler__) {
+define(["require", "exports", 'App/Event/WinnerChangedEventArgs', 'System/Event/EventHandler'], function(require, exports, __WinnerChangedEventArgs__, __EventHandler__) {
+    
+
     var WinnerChangedEventArgs = __WinnerChangedEventArgs__;
     var EventHandler = __EventHandler__;
 
     var Square = (function () {
         function Square() {
-            this.winnerChanged = new EventHandler();
+            this.winnerChanged = new EventHandler.EventHandler();
         }
         Square.prototype.setWinner = function (winner) {
             var eventArgs = new WinnerChangedEventArgs();

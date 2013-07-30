@@ -1,0 +1,6 @@
+
+class GridPresenter {
+
+}
+
+export = GridPresenter;

@@ -1,8 +1,8 @@
 
-import GridFactory = require ('com/Factory/GridFactory');
-import App = require ('com/App');
+import GridFactory = require ('./app/Factory/GridFactory');
+import App = require ('./app/App');
 
-var gridFactory = new GridFactory.GridFactory();
-var app = new App.App(gridFactory);
+var gridFactory = new GridFactory();
+var app = new App(gridFactory);
 
 app.start(2);

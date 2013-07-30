@@ -1,0 +1,6 @@
+
+class SquarePresenter {
+
+}
+
+export = SquarePresenter;

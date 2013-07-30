@@ -1,1 +1,0 @@
-//@ sourceMappingURL=ISquareView.js.map

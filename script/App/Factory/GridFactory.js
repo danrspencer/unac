@@ -1,4 +1,4 @@
-define(["require", "exports", 'App/View/AppView', 'App/Model/Grid', 'App/Presenter/GridPresenter', 'App/View/GridView', 'App/Model/Square', 'App/Presenter/SquarePresenter', 'App/View/SquareView'], function(require, exports, __AppView__, __Grid__, __GridPresenter__, __GridView__, __Square__, __SquarePresenter__, __SquareView__) {
+define(["require", "exports", 'App/View/AppView', 'App/Model/Grid', 'App/Presenter/GridPresenter', 'App/View/GridView', 'App/Model/Square', 'App/Presenter/SquarePresenter', 'App/View/SquareView', 'App/Event/NumberSetEventArgs'], function(require, exports, __AppView__, __Grid__, __GridPresenter__, __GridView__, __Square__, __SquarePresenter__, __SquareView__, __NumberSetEventArgs__) {
     
     
     
@@ -13,9 +13,19 @@ define(["require", "exports", 'App/View/AppView', 'App/Model/Grid', 'App/Present
     var SquarePresenter = __SquarePresenter__;
     var SquareView = __SquareView__;
 
+    var NumberSetEventArgs = __NumberSetEventArgs__;
+
     var GridFactory = (function () {
         function GridFactory(appModel, appView) {
+            this._appModel = appModel;
+            this._appView = appView;
+
+            appModel.depthSet.add(this.app_onDepthSet);
         }
+        GridFactory.prototype.app_onDepthSet = function (args) {
+            this.manufactureGrid(2);
+        };
+
         GridFactory.prototype.manufactureGrid = function (depth) {
             var squareViews = new Array(9);
             var squareModels = new Array(9);

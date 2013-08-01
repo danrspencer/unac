@@ -8,11 +8,11 @@ export class EventHandler<TArgs extends Object> {
     this._listeners = [];
   }
 
-  public add(listener: (sender: Object, args: TArgs) => void): void {
+  public add(listener: (args: TArgs) => void): void {
     this._listeners.push(listener);
   }
 
-  public remove (listener: (sender: Object, args: TArgs) => void): void {
+  public remove (listener: (args: TArgs) => void): void {
     for (var i = 0, l = this._listeners.length; i < l; l++) {
       if (this._listeners[i] == listener) {
         this._listeners.splice(i, 1);

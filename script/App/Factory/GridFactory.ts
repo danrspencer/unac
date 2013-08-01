@@ -12,13 +12,29 @@ import Square = require('App/Model/Square');
 import SquarePresenter = require('App/Presenter/SquarePresenter');
 import SquareView = require('App/View/SquareView');
 
+import NumberSetEventArgs = require('App/Event/NumberSetEventArgs');
+
+// ---------------------
+
 class GridFactory {
+
+  private _appModel: App;
+
+  private _appView: AppView;
 
   constructor(appModel: App, appView: AppView) {
 
+    this._appModel = appModel;
+    this._appView = appView;
+
+    appModel.depthSet.add(this.app_onDepthSet);
   }
 
-  public manufactureGrid(depth: number) {
+  private app_onDepthSet(args: NumberSetEventArgs) {
+    this.manufactureGrid(2);
+  }
+
+  private manufactureGrid(depth: number) {
 
     var squareViews: ISquareView[] = new Array(9);
     var squareModels: ISquare[] = new Array(9);

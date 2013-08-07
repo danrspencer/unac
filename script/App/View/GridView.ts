@@ -4,7 +4,7 @@
 import IGridView = require('Interface/View/IGridView');
 import ISquareView = require('Interface/View/ISquareView');
 
-import template = require ('App/View/GridView.html');
+import GridViewHtml = require ('App/View/GridView.html');
 
 class GridView implements IGridView, ISquareView {
 
@@ -12,7 +12,7 @@ class GridView implements IGridView, ISquareView {
 
   }
 
-  public render($container: JQuery) {
+  public render(container: JQuery) {
 
   }
 

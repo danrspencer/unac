@@ -1169,15 +1169,15 @@ interface Underscore {
    * for rendering complicated bits of HTML from JSON data sources. Template functions can both
    * interpolate variables, using <%= � %>, as well as execute arbitrary JavaScript code, with
    * <% � %>. If you wish to interpolate a value, and have it be HTML-escaped, use <%- � %> When
-   * you evaluate a template function, pass in a data object that has properties corresponding to
-   * the template's free variables. If you're writing a one-off, you can pass the data object as
-   * the second parameter to template in order to render immediately instead of returning a template
+   * you evaluate a Template function, pass in a data object that has properties corresponding to
+   * the Template's free variables. If you're writing a one-off, you can pass the data object as
+   * the second parameter to Template in order to render immediately instead of returning a Template
    * function. The settings argument should be a hash containing any _.templateSettings that should
    * be overridden.
-   * @param templateString Underscore HTML template.
+   * @param templateString Underscore HTML Template.
    * @param data Data to use when compiling `templateString`.
    * @param settings Settings to use while compiling.
-   * @return Returns the compiled Underscore HTML template.
+   * @return Returns the compiled Underscore HTML Template.
    **/
   template(templateString: string, data?: any, settings?: UnderscoreTemplateSettings): any;
 
@@ -1219,8 +1219,8 @@ interface Underscore {
 }
 
 /**
- * underscore.js template settings, set templateSettings or pass as an argument
- * to 'template()' to overide defaults.
+ * underscore.js Template settings, set templateSettings or pass as an argument
+ * to 'Template()' to overide defaults.
  **/
 interface UnderscoreTemplateSettings {
   /**

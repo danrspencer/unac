@@ -3,7 +3,7 @@
 
 import ISquareView = require('Interface/View/ISquareView');
 
-import template = require ('App/View/SquareView.html');
+import SquareViewHtml = require ('App/View/SquareView.html');
 
 class SquareView implements ISquareView {
 
@@ -11,7 +11,7 @@ class SquareView implements ISquareView {
 
   }
 
-  public render($container: JQuery) {
+  public render(container: JQuery) {
 
   }
 

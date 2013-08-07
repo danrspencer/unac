@@ -1,1 +1,1 @@
-{"version":3,"file":"SquareView.js","sources":["SquareView.ts"],"names":["SquareView","SquareView.constructor","SquareView.render"],"mappings":"AAAA;;;IAKA,eAA2B,YAA0B,CAAE;;IAEvD;QAEEA;QAEAC,CAACA;QAEDD,8BAAAA,UAAcA,UAAkBA;QAEhCE,CAACA;QAEHF;AAACA,IAADA,CAACA,IAAA;;;;GAEmB"}
+{"version":3,"file":"SquareView.js","sources":["SquareView.ts"],"names":["SquareView","SquareView.constructor","SquareView.render"],"mappings":"AAAA;;;IAKA,qBAAiC,kBAA0B,CAAE;;IAE7D;QAEEA;QAEAC,CAACA;QAEDD,8BAAAA,UAAcA,SAAiBA;QAE/BE,CAACA;QAEHF;AAACA,IAADA,CAACA,IAAA;;;;GAEmB"}

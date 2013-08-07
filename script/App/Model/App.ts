@@ -7,10 +7,20 @@ import EventHandler = require('System/Event/EventHandler');
 
 class App {
 
-  public depthSet: EventHandler.EventHandler<NumberSetEventArgs>;
+  public gridDepthSet: EventHandler.EventHandler<NumberSetEventArgs>;
+
+  private _gridDepth: number;
+    public setGridDepth(gridDepth: number)
+    {
+      this._gridDepth = gridDepth;
+
+      var eventArgs = new NumberSetEventArgs(gridDepth);
+
+      this.gridDepthSet.trigger(eventArgs);
+    }
 
   constructor() {
-    this.depthSet = new EventHandler.EventHandler<NumberSetEventArgs>();
+    this.gridDepthSet = new EventHandler.EventHandler<NumberSetEventArgs>();
   }
 
 }

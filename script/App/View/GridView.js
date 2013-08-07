@@ -1,13 +1,13 @@
-define(["require", "exports", 'App/View/GridView.html'], function(require, exports, __template__) {
+define(["require", "exports", 'App/View/GridView.html'], function(require, exports, __GridViewHtml__) {
     
     
 
-    var template = __template__;
+    var GridViewHtml = __GridViewHtml__;
 
     var GridView = (function () {
         function GridView(squares) {
         }
-        GridView.prototype.render = function ($container) {
+        GridView.prototype.render = function (container) {
         };
         return GridView;
     })();

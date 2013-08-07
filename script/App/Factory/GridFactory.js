@@ -1,11 +1,11 @@
-define(["require", "exports", 'App/View/AppView', 'App/Model/Grid', 'App/Presenter/GridPresenter', 'App/View/GridView', 'App/Model/Square', 'App/Presenter/SquarePresenter', 'App/View/SquareView', 'App/Event/NumberSetEventArgs'], function(require, exports, __AppView__, __Grid__, __GridPresenter__, __GridView__, __Square__, __SquarePresenter__, __SquareView__, __NumberSetEventArgs__) {
+define(["require", "exports", 'App/Model/App', 'App/Model/Grid', 'App/Presenter/GridPresenter', 'App/View/GridView', 'App/Model/Square', 'App/Presenter/SquarePresenter', 'App/View/SquareView', 'App/Event/NumberSetEventArgs'], function(require, exports, __App__, __Grid__, __GridPresenter__, __GridView__, __Square__, __SquarePresenter__, __SquareView__, __NumberSetEventArgs__) {
     
     
     
     
 
+    var App = __App__;
     
-    var AppView = __AppView__;
     var Grid = __Grid__;
     var GridPresenter = __GridPresenter__;
     var GridView = __GridView__;

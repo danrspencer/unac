@@ -1,1 +1,1 @@
-{"version":3,"file":"NumberSetEventArgs.js","sources":["NumberSetEventArgs.ts"],"names":["NumberSetEventArgs","NumberSetEventArgs.constructor"],"mappings":"AAAA;IACA;QAAAA;;AAICA,QAADA;AAACA,IAADA,CAACA,IAAA;;;;GAE2B"}
+{"version":3,"file":"NumberSetEventArgs.js","sources":["NumberSetEventArgs.ts"],"names":["NumberSetEventArgs","NumberSetEventArgs.constructor"],"mappings":"AAAA;IACA;QAIEA,4BAAYA,KAAaA;YACvBC,IAAIA,CAACA,KAAKA,GAAGA,KAAKA,CAACA;QACrBA,CAACA;QAEHD;AAACA,IAADA,CAACA,IAAA;;;;GAE2B"}

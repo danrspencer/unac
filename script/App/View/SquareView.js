@@ -1,12 +1,12 @@
-define(["require", "exports", 'App/View/SquareView.html'], function(require, exports, __template__) {
+define(["require", "exports", 'App/View/SquareView.html'], function(require, exports, __SquareViewHtml__) {
     
 
-    var template = __template__;
+    var SquareViewHtml = __SquareViewHtml__;
 
     var SquareView = (function () {
         function SquareView() {
         }
-        SquareView.prototype.render = function ($container) {
+        SquareView.prototype.render = function (container) {
         };
         return SquareView;
     })();

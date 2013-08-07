@@ -5,6 +5,8 @@ define(["require", "exports", 'App/Model/App', 'App/View/AppView'], function(req
     var AppPresenter = (function () {
         function AppPresenter(view, app) {
         }
+        AppPresenter.prototype.setGridDepth = function (depth) {
+        };
         return AppPresenter;
     })();
 

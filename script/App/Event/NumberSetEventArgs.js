@@ -1,6 +1,7 @@
 define(["require", "exports"], function(require, exports) {
     var NumberSetEventArgs = (function () {
-        function NumberSetEventArgs() {
+        function NumberSetEventArgs(value) {
+            this.value = value;
         }
         return NumberSetEventArgs;
     })();

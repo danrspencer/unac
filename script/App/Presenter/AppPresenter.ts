@@ -7,6 +7,10 @@ class AppPresenter {
 
   }
 
+  public setGridDepth(depth: number) {
+
+  }
+
 }
 
 export = AppPresenter;

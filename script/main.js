@@ -1,6 +1,6 @@
 
 require.config({
-  baseUrl: '/scripts/'
+  baseUrl: 'script/'
 });
 
 require(['bootstrap']);

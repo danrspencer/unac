@@ -1,26 +1,32 @@
 import IGrid = require('Interface/Model/IGrid');
-
 import GridFactory = require('App/Factory/GridFactory');
-import NumberSetEventArgs = require('App/Event/NumberSetEventArgs');
 
-import EventHandler = require('System/Event/EventHandler');
+import EventableType = require('System/Event/EventableType');
 
 class App {
 
-  public gridDepthSet: EventHandler.EventHandler<NumberSetEventArgs>;
+  /*****/
+
+  public gridDepthChanged: EventHandler<number>;
 
   private _gridDepth: number;
-    public setGridDepth(gridDepth: number)
-    {
-      this._gridDepth = gridDepth;
+    public setGridDepth(value: number) {
+      this._gridDepth = value;
 
-      var eventArgs = new NumberSetEventArgs(gridDepth);
-
-      this.gridDepthSet.trigger(eventArgs);
+      this.gridDepthChanged.trigger(value);
+    }
+    public getGridDepth() {
+      return this._gridDepth;
     }
 
-  constructor() {
-    this.gridDepthSet = new EventHandler.EventHandler<NumberSetEventArgs>();
+  /*****/
+
+  public gridDepth: EventableType<number>;
+
+  /*****/
+
+  constructor(gridDepth: EventableType<number>) {
+    this.gridDepth = gridDepth;
   }
 
 }

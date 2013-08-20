@@ -1,4 +1,7 @@
 define(["require", "exports"], function(require, exports) {
+    /// <reference path="../../Vendor/jquery.d.ts" />
+    /// <reference path="../../Vendor/underscore.d.ts" />
+    /// <reference path="../../Vendor/underscore-typed.d.ts" />
     var html = '<table class="grid"> \
              <tr> \
                <td data-square="<%= content[0].id %>" class="square <%= gridFree ? "top left" : "" %> <%= content[0].getWinner() == 1 ? "p1owned" : (content[0].getWinner() == 2 ? "p2owned" : "unowned") %>"> \
@@ -40,4 +43,4 @@ define(["require", "exports"], function(require, exports) {
     
     return template;
 });
-//@ sourceMappingURL=GridView.html.js.map
+//# sourceMappingURL=GridView.html.js.map

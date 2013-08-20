@@ -1,3 +1,5 @@
+/// <reference path="../../Vendor/underscore.d.ts" />
+/// <reference path="../../Vendor/jquery.d.ts" />
 define(["require", "exports", 'App/View/GridView.html'], function(require, exports, __GridViewHtml__) {
     
     
@@ -7,7 +9,10 @@ define(["require", "exports", 'App/View/GridView.html'], function(require, expor
     var GridView = (function () {
         function GridView(squares) {
         }
-        GridView.prototype.render = function (container) {
+        GridView.prototype.render = function () {
+            var html = GridViewHtml({});
+
+            return html;
         };
         return GridView;
     })();
@@ -15,4 +20,4 @@ define(["require", "exports", 'App/View/GridView.html'], function(require, expor
     
     return GridView;
 });
-//@ sourceMappingURL=GridView.js.map
+//# sourceMappingURL=GridView.js.map

@@ -1,21 +1,21 @@
-define(["require", "exports", 'App/Event/NumberSetEventArgs', 'System/Event/EventHandler'], function(require, exports, __NumberSetEventArgs__, __EventHandler__) {
+define(["require", "exports", 'App/Factory/GridFactory', 'System/Event/EventableType'], function(require, exports, __GridFactory__, __EventableType__) {
     
+    var GridFactory = __GridFactory__;
 
-    
-    var NumberSetEventArgs = __NumberSetEventArgs__;
-
-    var EventHandler = __EventHandler__;
+    var EventableType = __EventableType__;
 
     var App = (function () {
-        function App() {
-            this.gridDepthSet = new EventHandler.EventHandler();
+        /*****/
+        function App(gridDepth) {
+            this.gridDepth = gridDepth;
         }
-        App.prototype.setGridDepth = function (gridDepth) {
-            this._gridDepth = gridDepth;
+        App.prototype.setGridDepth = function (value) {
+            this._gridDepth = value;
 
-            var eventArgs = new NumberSetEventArgs(gridDepth);
-
-            this.gridDepthSet.trigger(eventArgs);
+            this.gridDepthChanged.trigger(value);
+        };
+        App.prototype.getGridDepth = function () {
+            return this._gridDepth;
         };
         return App;
     })();
@@ -23,4 +23,4 @@ define(["require", "exports", 'App/Event/NumberSetEventArgs', 'System/Event/Even
     
     return App;
 });
-//@ sourceMappingURL=App.js.map
+//# sourceMappingURL=App.js.map

@@ -1,12 +1,10 @@
-import EventHandler = require('System/Event/EventHandler');
-
 import IGrid = require('Interface/Model/IGrid');
 import ISquare = require('Interface/Model/ISquare');
 
 
 class Grid implements IGrid, ISquare {
 
-  public winnerChanged: EventHandler.EventHandler<Object>;
+  public winnerChanged: EventHandler<Object>;
 
   constructor(squares: ISquare[]) {
 

@@ -1,11 +1,11 @@
-define(["require", "exports", 'App/Model/App', 'App/Model/Grid', 'App/Presenter/GridPresenter', 'App/View/GridView', 'App/Model/Square', 'App/Presenter/SquarePresenter', 'App/View/SquareView', 'App/Event/NumberSetEventArgs'], function(require, exports, __App__, __Grid__, __GridPresenter__, __GridView__, __Square__, __SquarePresenter__, __SquareView__, __NumberSetEventArgs__) {
+define(["require", "exports", 'App/View/AppView', 'App/Model/Grid', 'App/Presenter/GridPresenter', 'App/View/GridView', 'App/Model/Square', 'App/Presenter/SquarePresenter', 'App/View/SquareView'], function(require, exports, __AppView__, __Grid__, __GridPresenter__, __GridView__, __Square__, __SquarePresenter__, __SquareView__) {
     
     
     
     
 
-    var App = __App__;
     
+    var AppView = __AppView__;
     var Grid = __Grid__;
     var GridPresenter = __GridPresenter__;
     var GridView = __GridView__;
@@ -13,17 +13,18 @@ define(["require", "exports", 'App/Model/App', 'App/Model/Grid', 'App/Presenter/
     var SquarePresenter = __SquarePresenter__;
     var SquareView = __SquareView__;
 
-    var NumberSetEventArgs = __NumberSetEventArgs__;
+    
 
+    // ---------------------
     var GridFactory = (function () {
-        function GridFactory(appModel, appView) {
-            this._appModel = appModel;
+        function GridFactory(app, appView) {
+            this._app = app;
             this._appView = appView;
 
-            appModel.depthSet.add(this.app_onDepthSet);
+            this._app.gridDepth.assigned.add(this.appModel_gridDepthChanged, this);
         }
-        GridFactory.prototype.app_onDepthSet = function (args) {
-            this.manufactureGrid(2);
+        GridFactory.prototype.appModel_gridDepthChanged = function (args) {
+            this.manufactureGrid(args);
         };
 
         GridFactory.prototype.manufactureGrid = function (depth) {
@@ -36,6 +37,8 @@ define(["require", "exports", 'App/Model/App', 'App/Model/Grid', 'App/Presenter/
             var grid = new Grid(squareModels);
 
             var presenter = new GridPresenter(gridView, grid);
+
+            this._appView.setGridView(gridView);
         };
 
         GridFactory.prototype.generateSquares = function (depth, views, models) {
@@ -80,4 +83,4 @@ define(["require", "exports", 'App/Model/App', 'App/Model/Grid', 'App/Presenter/
     
     return GridFactory;
 });
-//@ sourceMappingURL=GridFactory.js.map
+//# sourceMappingURL=GridFactory.js.map

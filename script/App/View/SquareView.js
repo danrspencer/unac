@@ -1,3 +1,5 @@
+/// <reference path="../../Vendor/underscore.d.ts" />
+/// <reference path="../../Vendor/jquery.d.ts" />
 define(["require", "exports", 'App/View/SquareView.html'], function(require, exports, __SquareViewHtml__) {
     
 
@@ -6,7 +8,7 @@ define(["require", "exports", 'App/View/SquareView.html'], function(require, exp
     var SquareView = (function () {
         function SquareView() {
         }
-        SquareView.prototype.render = function (container) {
+        SquareView.prototype.render = function () {
         };
         return SquareView;
     })();
@@ -14,4 +16,4 @@ define(["require", "exports", 'App/View/SquareView.html'], function(require, exp
     
     return SquareView;
 });
-//@ sourceMappingURL=SquareView.js.map
+//# sourceMappingURL=SquareView.js.map

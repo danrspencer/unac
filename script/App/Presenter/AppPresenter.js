@@ -13,4 +13,4 @@ define(["require", "exports", 'App/Model/App', 'App/View/AppView'], function(req
     
     return AppPresenter;
 });
-//@ sourceMappingURL=AppPresenter.js.map
+//# sourceMappingURL=AppPresenter.js.map

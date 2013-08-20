@@ -11,7 +11,7 @@ class SquareView implements ISquareView {
 
   }
 
-  public render(container: JQuery) {
+  public render() {
 
   }
 

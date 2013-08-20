@@ -12,26 +12,26 @@ import Square = require('App/Model/Square');
 import SquarePresenter = require('App/Presenter/SquarePresenter');
 import SquareView = require('App/View/SquareView');
 
-import NumberSetEventArgs = require('App/Event/NumberSetEventArgs');
+import NumberSetEventArgs = require('.././NumberSetEventArgs');
 
 // ---------------------
 
 class GridFactory {
 
-  private _appModel: App;
+  private _app: App;
 
   private _appView: AppView;
 
-  constructor(appModel: App, appView: AppView) {
+  constructor(app: App, appView: AppView) {
 
-    this._appModel = appModel;
+    this._app = app;
     this._appView = appView;
 
-    appModel.depthSet.add(this.app_onDepthSet);
+    this._app.gridDepth.assigned.add(this.appModel_gridDepthChanged, this);
   }
 
-  private app_onDepthSet(args: NumberSetEventArgs) {
-    this.manufactureGrid(2);
+  private appModel_gridDepthChanged(args: number) {
+    this.manufactureGrid(args);
   }
 
   private manufactureGrid(depth: number) {
@@ -45,6 +45,8 @@ class GridFactory {
     var grid = new Grid(squareModels);
 
     var presenter = new GridPresenter(gridView, grid);
+
+    this._appView.setGridView(gridView);
   }
 
   private generateSquares(depth: number, views: ISquareView[], models: ISquare[]) {

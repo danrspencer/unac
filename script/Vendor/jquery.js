@@ -3897,7 +3897,7 @@
                     data;
         } catch( e ) {}
 
-        // Make sure we set the data so it isn't changed later
+        // Make sure we set the data so it isn't assigned later
         jQuery.data( elem, key, data );
 
       } else {
@@ -4804,7 +4804,7 @@
           continue;
         }
 
-        // If event changes its type, use the special event handlers for the changed type
+        // If event changes its type, use the special event handlers for the assigned type
         special = jQuery.event.special[ type ] || {};
 
         // If selector defined, determine special event api type, otherwise given type
@@ -7132,7 +7132,7 @@
           style.minWidth = style.maxWidth = style.width = ret;
           ret = computed.width;
 
-          // Revert the changed values
+          // Revert the assigned values
           style.width = width;
           style.minWidth = minWidth;
           style.maxWidth = maxWidth;
@@ -7179,7 +7179,7 @@
         style.left = name === "fontSize" ? "1em" : ret;
         ret = style.pixelLeft + "px";
 
-        // Revert the changed values
+        // Revert the assigned values
         style.left = left;
         if ( rsLeft ) {
           rs.left = rsLeft;

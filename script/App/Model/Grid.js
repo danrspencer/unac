@@ -1,7 +1,5 @@
 define(["require", "exports"], function(require, exports) {
     
-
-    
     
 
     var Grid = (function () {
@@ -32,4 +30,4 @@ define(["require", "exports"], function(require, exports) {
     
     return Grid;
 });
-//@ sourceMappingURL=Grid.js.map
+//# sourceMappingURL=Grid.js.map

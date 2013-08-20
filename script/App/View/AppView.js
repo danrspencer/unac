@@ -1,6 +1,9 @@
-define(["require", "exports", 'App/View/AppView.html'], function(require, exports, __AppViewHtml__) {
+/// <reference path="../../Vendor/jquery.d.ts" />
+/// <reference path="../../Vendor/underscore.d.ts" />
+/// <reference path="../../Vendor/underscore-typed.d.ts" />
+define(["require", "exports", 'App/View/GridView', 'App/View/AppView.html'], function(require, exports, __GridView__, __AppViewHtml__) {
     
-    
+    var GridView = __GridView__;
 
     var AppViewHtml = __AppViewHtml__;
 
@@ -10,13 +13,13 @@ define(["require", "exports", 'App/View/AppView.html'], function(require, export
         AppView.prototype.setGridView = function (gridView) {
             this._gridView = gridView;
 
-            this._gridView.render(this._container);
+            $('#gridContainer').html(this._gridView.render());
         };
 
-        AppView.prototype.render = function (container) {
+        AppView.prototype.render = function () {
             var html = AppViewHtml({});
 
-            container.html(html);
+            return html;
         };
         return AppView;
     })();
@@ -24,4 +27,4 @@ define(["require", "exports", 'App/View/AppView.html'], function(require, export
     
     return AppView;
 });
-//@ sourceMappingURL=AppView.js.map
+//# sourceMappingURL=AppView.js.map

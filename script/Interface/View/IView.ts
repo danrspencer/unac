@@ -2,7 +2,7 @@
 
 interface IView {
 
-  render(container: JQuery);
+  render();
 
 }
 

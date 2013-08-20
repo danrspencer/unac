@@ -16,14 +16,14 @@ class AppView implements IView {
     public setGridView(gridView: GridView) {
       this._gridView = gridView;
 
-      this._gridView.render(this._container);
+      $('#gridContainer').html(this._gridView.render());
     }
 
-  public render(container: JQuery) {
+  public render() {
 
     var html = AppViewHtml({});
 
-    container.html(html);
+    return html;
   }
 
 }

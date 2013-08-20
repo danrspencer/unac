@@ -1,27 +1,14 @@
-define(["require", "exports", 'App/Event/WinnerChangedEventArgs', 'System/Event/EventHandler'], function(require, exports, __WinnerChangedEventArgs__, __EventHandler__) {
+define(["require", "exports", 'System/Event/EventableType', 'App/Enum/WinnerType'], function(require, exports, __EventableType__, __WinnerType__) {
     
 
-    var WinnerChangedEventArgs = __WinnerChangedEventArgs__;
-    var EventHandler = __EventHandler__;
+    var EventableType = __EventableType__;
+    var WinnerType = __WinnerType__;
 
     var Square = (function () {
         function Square() {
-            this.winnerChanged = new EventHandler.EventHandler();
+            this.winner = new EventableType(this);
+            this.winner.set(WinnerType.Player1);
         }
-        Square.prototype.setWinner = function (winner) {
-            var eventArgs = new WinnerChangedEventArgs();
-            eventArgs.id = '1';
-            eventArgs.winner = this._winner;
-
-            this.winnerChanged.trigger(eventArgs);
-
-            return true;
-        };
-
-        Square.prototype.getWinner = function () {
-            return 0;
-        };
-
         Square.prototype.getStateString = function () {
             return '';
         };
@@ -31,4 +18,4 @@ define(["require", "exports", 'App/Event/WinnerChangedEventArgs', 'System/Event/
     
     return Square;
 });
-//@ sourceMappingURL=Square.js.map
+//# sourceMappingURL=Square.js.map

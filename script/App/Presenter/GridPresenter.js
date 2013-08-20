@@ -13,4 +13,4 @@ define(["require", "exports", 'App/Model/Grid', 'App/View/GridView'], function(r
     
     return GridPresenter;
 });
-//@ sourceMappingURL=GridPresenter.js.map
+//# sourceMappingURL=GridPresenter.js.map

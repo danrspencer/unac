@@ -1,13 +1,9 @@
-import EventHandler = require('System/Event/EventHandler');
-import WinnerChangedEventArgs = require('App/Event/WinnerChangedEventArgs');
+import EventableType = require('System/Event/EventableType');
+import WinnerType = require('App/Enum/WinnerType');
 
 interface ISquare {
 
-  winnerChanged: EventHandler.EventHandler<WinnerChangedEventArgs>;
-
-  setWinner(winner: number): boolean;
-
-  getWinner(): number;
+  winner: EventableType<WinnerType>;
 
   getStateString(): string;
 

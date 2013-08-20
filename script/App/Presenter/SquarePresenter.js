@@ -11,4 +11,4 @@ define(["require", "exports", 'App/Model/Square', 'App/View/SquareView'], functi
     
     return SquarePresenter;
 });
-//@ sourceMappingURL=SquarePresenter.js.map
+//# sourceMappingURL=SquarePresenter.js.map

@@ -12,8 +12,10 @@ class GridView implements IGridView, ISquareView {
 
   }
 
-  public render(container: JQuery) {
+  public render() {
+    var html = GridViewHtml({});
 
+    return html;
   }
 
 }

@@ -2,7 +2,9 @@
 /// <reference path="../../Vendor/underscore.d.ts" />
 /// <reference path="../../Vendor/underscore-typed.d.ts" />
 
-var html = 'App view';
+var html = 'Unac' +
+           '<div class="gridContainer">' +
+           '</div>';
 
 var template = _.template(html);
 

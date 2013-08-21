@@ -12,8 +12,6 @@ import Square = require('App/Model/Square');
 import SquarePresenter = require('App/Presenter/SquarePresenter');
 import SquareView = require('App/View/SquareView');
 
-import NumberSetEventArgs = require('.././NumberSetEventArgs');
-
 // ---------------------
 
 class GridFactory {

@@ -5,18 +5,9 @@ define(["require", "exports", 'App/Factory/GridFactory', 'System/Event/Eventable
     var EventableType = __EventableType__;
 
     var App = (function () {
-        /*****/
-        function App(gridDepth) {
-            this.gridDepth = gridDepth;
+        function App() {
+            this.gridDepth = new EventableType(this);
         }
-        App.prototype.setGridDepth = function (value) {
-            this._gridDepth = value;
-
-            this.gridDepthChanged.trigger(value);
-        };
-        App.prototype.getGridDepth = function () {
-            return this._gridDepth;
-        };
         return App;
     })();
 

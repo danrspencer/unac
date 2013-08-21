@@ -1,10 +1,12 @@
 import IGrid = require('Interface/Model/IGrid');
 import ISquare = require('Interface/Model/ISquare');
 
+import EventableType = require('System/Event/EventableType');
+import WinnerType = require('App/Enum/WinnerType');
 
 class Grid implements IGrid, ISquare {
 
-  public winnerChanged: EventHandler<Object>;
+  public winner = new EventableType<WinnerType>(this);
 
   constructor(squares: ISquare[]) {
 
@@ -16,14 +18,6 @@ class Grid implements IGrid, ISquare {
 
   public isGridFull(id: string): boolean {
     return false;
-  }
-
-  public setWinner(winner: number): boolean {
-    return false;
-  }
-
-  public getWinner(): number {
-    return 0;
   }
 
   public getStateString(): string {

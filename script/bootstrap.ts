@@ -10,9 +10,7 @@ import EventableType = require('System/Event/EventableType');
 
 // --------------------------------------
 
-var app = new App(
-  new EventableType<number>()
-);
+var app = new App();
 var appView = new AppView();
 var appPresenter = new AppPresenter(appView, app);
 

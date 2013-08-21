@@ -13,8 +13,6 @@ define(["require", "exports", 'App/View/AppView', 'App/Model/Grid', 'App/Present
     var SquarePresenter = __SquarePresenter__;
     var SquareView = __SquareView__;
 
-    
-
     // ---------------------
     var GridFactory = (function () {
         function GridFactory(app, appView) {

@@ -1,9 +1,13 @@
-define(["require", "exports"], function(require, exports) {
+define(["require", "exports", 'System/Event/EventableType', 'App/Enum/WinnerType'], function(require, exports, __EventableType__, __WinnerType__) {
     
     
 
+    var EventableType = __EventableType__;
+    var WinnerType = __WinnerType__;
+
     var Grid = (function () {
         function Grid(squares) {
+            this.winner = new EventableType(this);
         }
         Grid.prototype.getSquareById = function (id) {
             return null;
@@ -11,14 +15,6 @@ define(["require", "exports"], function(require, exports) {
 
         Grid.prototype.isGridFull = function (id) {
             return false;
-        };
-
-        Grid.prototype.setWinner = function (winner) {
-            return false;
-        };
-
-        Grid.prototype.getWinner = function () {
-            return 0;
         };
 
         Grid.prototype.getStateString = function () {

@@ -5,28 +5,10 @@ import EventableType = require('System/Event/EventableType');
 
 class App {
 
-  /*****/
+  public gridDepth = new EventableType<number>(this);
 
-  public gridDepthChanged: EventHandler<number>;
+  constructor() {
 
-  private _gridDepth: number;
-    public setGridDepth(value: number) {
-      this._gridDepth = value;
-
-      this.gridDepthChanged.trigger(value);
-    }
-    public getGridDepth() {
-      return this._gridDepth;
-    }
-
-  /*****/
-
-  public gridDepth: EventableType<number>;
-
-  /*****/
-
-  constructor(gridDepth: EventableType<number>) {
-    this.gridDepth = gridDepth;
   }
 
 }

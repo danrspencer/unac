@@ -7,7 +7,6 @@ define(["require", "exports", 'System/Event/EventableType', 'App/Enum/WinnerType
     var Square = (function () {
         function Square() {
             this.winner = new EventableType(this);
-            this.winner.set(WinnerType.Player1);
         }
         Square.prototype.getStateString = function () {
             return '';

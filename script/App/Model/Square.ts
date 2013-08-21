@@ -7,15 +7,11 @@ class Square implements ISquare {
 
   public winnerChanged;
 
-  public winner: EventableType<WinnerType> = new EventableType<WinnerType>(this);
+  public winner = new EventableType<WinnerType>(this);
 
   constructor() {
-    this.winner.set(WinnerType.Player1);
-
 
   }
-
-
 
   public getStateString(): string {
     return '';

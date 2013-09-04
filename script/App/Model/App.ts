@@ -1,14 +1,33 @@
 import IGrid = require('Interface/Model/IGrid');
-import GridFactory = require('App/Factory/GridFactory');
+
+import GridModelFactory = require('App/Factory/GridModelFactory');
 
 import EventableType = require('System/Event/EventableType');
+import EventableArray = require('System/Event/EventableArray');
+import EventFactory = require('System/Event/EventFactory');
 
 class App {
 
-  public gridDepth = new EventableType<number>(this);
+  public grid: EventableArray<IGrid>;
 
-  constructor() {
+  private _gridDepth: number;
+    public setGridDepth(value: number) {
+      this._gridDepth = value;
 
+      this.createGrid();
+    }
+
+  private _gridModelFactory: GridModelFactory;
+
+  constructor(eventFactory: EventFactory, gridModelFactory: GridModelFactory) {
+    this.grid = eventFactory.getEventableArray<IGrid>();
+  }
+
+  private createGrid() {
+
+    var grid = this._gridModelFactory.manufactureGrid(this._gridDepth);
+
+    this.grid.set(grid);
   }
 
 }

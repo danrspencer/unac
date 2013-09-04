@@ -1,11 +1,1 @@
-/// <reference path="../../Vendor/jquery.d.ts" />
-/// <reference path="../../Vendor/underscore.d.ts" />
-/// <reference path="../../Vendor/underscore-typed.d.ts" />
-
-var html = 'Unac' +
-           '<div class="gridContainer">' +
-           '</div>';
-
-var template = _.template(html);
-
-export = template;
+export function getHtml(): string { return '<h1>Ultimate 0 & X</h1><div class="gridContainer">    <%= test %></div>'; }

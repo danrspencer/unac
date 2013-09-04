@@ -2,8 +2,9 @@
 
 interface IView {
 
-  render();
+  element: JQuery;
 
+  render(): IView;
 }
 
 export = IView;

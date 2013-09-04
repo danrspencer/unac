@@ -1,21 +1,21 @@
 /// <reference path="Vendor/jquery.d.ts" />
 
-import App = require ('App/Model/App');
+import EventFactory = require ('System/Event/EventFactory');
 
+import App = require ('App/Model/App');
 import AppPresenter = require ('App/Presenter/AppPresenter');
 import AppView = require ('App/View/AppView');
-import GridFactory = require ('App/Factory/GridFactory');
+import GridModelFactory = require ('App/Factory/GridModelFactory');
 
-import EventableType = require('System/Event/EventableType');
+var eventFactory = new EventFactory();
+var gridFactory = new GridModelFactory();
 
-// --------------------------------------
-
-var app = new App();
+var app = new App(eventFactory, gridFactory);
 var appView = new AppView();
 var appPresenter = new AppPresenter(appView, app);
 
-var gridFactory = new GridFactory(app, appView);
+appView.render()
 
-$('body').html(appView.render());
+$('body').append(appView.element);
 
-app.gridDepth.set(2);
+app.setGridDepth(2);

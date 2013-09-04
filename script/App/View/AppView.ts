@@ -2,28 +2,20 @@
 /// <reference path="../../Vendor/underscore.d.ts" />
 /// <reference path="../../Vendor/underscore-typed.d.ts" />
 
-import IView = require('Interface/View/IView');
+import IView = require('System/View/IView');
 import GridView = require ('App/View/GridView');
 
 import AppViewHtml = require('App/View/AppView.html');
 
 class AppView implements IView {
 
-  private _container: JQuery;
+  public element: JQuery;
 
-  private _gridView: GridView;
+  public render(): AppView {
 
-    public setGridView(gridView: GridView) {
-      this._gridView = gridView;
+    AppViewHtml.getHtml();
 
-      $('#gridContainer').html(this._gridView.render());
-    }
-
-  public render() {
-
-    var html = AppViewHtml({});
-
-    return html;
+    return this;
   }
 
 }

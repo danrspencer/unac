@@ -9,7 +9,7 @@ import SquareViewHtml = require('App/View/SquareView.html');
 
 class GridView implements IGridView, ISquareView {
 
-  public
+
 
   constructor(squares: ISquareView[]) {
 

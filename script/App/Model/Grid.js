@@ -1,13 +1,15 @@
-define(["require", "exports", 'System/Event/EventableType', 'App/Enum/WinnerType'], function(require, exports, __EventableType__, __WinnerType__) {
+define(["require", "exports", 'App/Enum/WinnerType', 'System/Event/EventableType', 'System/Event/EventFactory'], function(require, exports, __WinnerType__, __EventableType__, __EventFactory__) {
     
     
 
-    var EventableType = __EventableType__;
     var WinnerType = __WinnerType__;
 
+    var EventableType = __EventableType__;
+    var EventFactory = __EventFactory__;
+
     var Grid = (function () {
-        function Grid(squares) {
-            this.winner = new EventableType(this);
+        function Grid(eventFactory, squares) {
+            this.winner = eventFactory.getEventableType(this);
         }
         Grid.prototype.getSquareById = function (id) {
             return null;

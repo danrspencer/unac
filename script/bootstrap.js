@@ -1,22 +1,23 @@
 /// <reference path="Vendor/jquery.d.ts" />
-define(["require", "exports", 'App/Model/App', 'App/Presenter/AppPresenter', 'App/View/AppView', 'App/Factory/GridFactory', 'System/Event/EventableType'], function(require, exports, __App__, __AppPresenter__, __AppView__, __GridFactory__, __EventableType__) {
-    var App = __App__;
+define(["require", "exports", 'System/Event/EventFactory', 'App/Model/App', 'App/Presenter/AppPresenter', 'App/View/AppView', 'App/Factory/GridModelFactory'], function(require, exports, __EventFactory__, __App__, __AppPresenter__, __AppView__, __GridModelFactory__) {
+    var EventFactory = __EventFactory__;
 
+    var App = __App__;
     var AppPresenter = __AppPresenter__;
     var AppView = __AppView__;
-    var GridFactory = __GridFactory__;
+    var GridModelFactory = __GridModelFactory__;
 
-    var EventableType = __EventableType__;
+    var eventFactory = new EventFactory();
+    var gridFactory = new GridModelFactory();
 
-    // --------------------------------------
-    var app = new App();
+    var app = new App(eventFactory, gridFactory);
     var appView = new AppView();
     var appPresenter = new AppPresenter(appView, app);
 
-    var gridFactory = new GridFactory(app, appView);
+    appView.render();
 
-    $('body').html(appView.render());
+    $('body').append(appView.element);
 
-    app.gridDepth.set(2);
+    app.setGridDepth(2);
 });
 //# sourceMappingURL=bootstrap.js.map

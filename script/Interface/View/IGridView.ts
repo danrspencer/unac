@@ -1,4 +1,4 @@
-import IView = require('Interface/View/IView');
+import IView = require('System/View/IView');
 
 interface IGridView extends IView {
 

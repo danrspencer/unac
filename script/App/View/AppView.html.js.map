@@ -1,1 +1,1 @@
-{"version":3,"file":"AppView.html.js","sourceRoot":"","sources":["AppView.html.ts"],"names":[],"mappings":"AAAA;IAIA,iDAJiD;IACjD,qDAAqD;IACrD,2DAA2D;IAEvD,IAAA,IAAI,GAAG,MAAM,GACN,6BAA6B,GAC7B,QAAQ,CAAC;;IAEpB,IAAI,QAAQ,GAAG,CAAC,CAAC,QAAQ,CAAC,IAAI,CAAC,CAAC;;;;GAEd"}
+{"version":3,"file":"AppView.html.js","sourceRoot":"","sources":["AppView.html.ts"],"names":["getHtml"],"mappings":"AAAA;IAAA,SAAgB,OAAO;QAAaA,OAAOA,yEAAyEA,CAACA;IAACA,CAACA;IAAvH,0BAAuH;GAAA"}

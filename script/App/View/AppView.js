@@ -10,16 +10,10 @@ define(["require", "exports", 'App/View/GridView', 'App/View/AppView.html'], fun
     var AppView = (function () {
         function AppView() {
         }
-        AppView.prototype.setGridView = function (gridView) {
-            this._gridView = gridView;
-
-            $('#gridContainer').html(this._gridView.render());
-        };
-
         AppView.prototype.render = function () {
-            var html = AppViewHtml({});
+            AppViewHtml.getHtml();
 
-            return html;
+            return this;
         };
         return AppView;
     })();

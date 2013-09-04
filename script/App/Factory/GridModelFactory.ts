@@ -14,25 +14,9 @@ import SquareView = require('App/View/SquareView');
 
 // ---------------------
 
-class GridFactory {
+class GridModelFactory {
 
-  private _app: App;
-
-  private _appView: AppView;
-
-  constructor(app: App, appView: AppView) {
-
-    this._app = app;
-    this._appView = appView;
-
-    this._app.gridDepth.assigned.add(this.appModel_gridDepthChanged, this);
-  }
-
-  private appModel_gridDepthChanged(args: number) {
-    this.manufactureGrid(args);
-  }
-
-  private manufactureGrid(depth: number) {
+  public manufactureGrid(depth: number) {
 
     var squareViews: ISquareView[] = new Array(9);
     var squareModels: ISquare[] = new Array(9);
@@ -40,11 +24,11 @@ class GridFactory {
     this.generateSquares(depth, squareViews, squareModels);
 
     var gridView = new GridView(squareViews);
-    var grid = new Grid(squareModels);
+    //var grid = new Grid(squareModels);
 
-    var presenter = new GridPresenter(gridView, grid);
+    //var presenter = new GridPresenter(gridView, grid);
 
-    this._appView.setGridView(gridView);
+    //this._appView.setGridView(gridView);
   }
 
   private generateSquares(depth: number, views: ISquareView[], models: ISquare[]) {
@@ -73,7 +57,7 @@ class GridFactory {
   }
 
   private generateGridSquares(depth: number, views: ISquareView[], models: ISquare[]) {
-    for (var n = 0; n <= 8; n++) {
+    /*for (var n = 0; n <= 8; n++) {
 
       var squareViews: ISquareView[] = new Array(9);
       var squareModels: ISquare[] = new Array(9);
@@ -81,14 +65,14 @@ class GridFactory {
       this.generateSquares(depth - 1, squareViews, squareModels);
 
       var gridView = new GridView(squareViews);
-      var grid = new Grid(squareModels);
+     // var grid = new Grid(squareModels);
 
       var presenter = new GridPresenter(gridView, grid);
 
       views[n] = gridView;
       models[n] = grid;
-    }
+    }*/
   }
 }
 
-export = GridFactory;
+export = GridModelFactory;

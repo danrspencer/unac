@@ -1,15 +1,18 @@
 import IGrid = require('Interface/Model/IGrid');
 import ISquare = require('Interface/Model/ISquare');
 
-import EventableType = require('System/Event/EventableType');
 import WinnerType = require('App/Enum/WinnerType');
+
+import EventableType = require('System/Event/EventableType');
+import EventFactory = require('System/Event/EventFactory');
+
 
 class Grid implements IGrid, ISquare {
 
-  public winner = new EventableType<WinnerType>(this);
+  public winner: EventableType<WinnerType>;
 
-  constructor(squares: ISquare[]) {
-
+  constructor(eventFactory: EventFactory, squares: ISquare[]) {
+    this.winner = eventFactory.getEventableType<WinnerType>(this);
   }
 
   public getSquareById(id: string): ISquare {

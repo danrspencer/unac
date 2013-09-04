@@ -14,32 +14,22 @@ define(["require", "exports", 'App/View/AppView', 'App/Model/Grid', 'App/Present
     var SquareView = __SquareView__;
 
     // ---------------------
-    var GridFactory = (function () {
-        function GridFactory(app, appView) {
-            this._app = app;
-            this._appView = appView;
-
-            this._app.gridDepth.assigned.add(this.appModel_gridDepthChanged, this);
+    var GridModelFactory = (function () {
+        function GridModelFactory() {
         }
-        GridFactory.prototype.appModel_gridDepthChanged = function (args) {
-            this.manufactureGrid(args);
-        };
-
-        GridFactory.prototype.manufactureGrid = function (depth) {
+        GridModelFactory.prototype.manufactureGrid = function (depth) {
             var squareViews = new Array(9);
             var squareModels = new Array(9);
 
             this.generateSquares(depth, squareViews, squareModels);
 
             var gridView = new GridView(squareViews);
-            var grid = new Grid(squareModels);
-
-            var presenter = new GridPresenter(gridView, grid);
-
-            this._appView.setGridView(gridView);
+            //var grid = new Grid(squareModels);
+            //var presenter = new GridPresenter(gridView, grid);
+            //this._appView.setGridView(gridView);
         };
 
-        GridFactory.prototype.generateSquares = function (depth, views, models) {
+        GridModelFactory.prototype.generateSquares = function (depth, views, models) {
             if (depth === 0) {
                 this.generateTrueSquares(views, models);
             } else {
@@ -47,7 +37,7 @@ define(["require", "exports", 'App/View/AppView', 'App/Model/Grid', 'App/Present
             }
         };
 
-        GridFactory.prototype.generateTrueSquares = function (views, models) {
+        GridModelFactory.prototype.generateTrueSquares = function (views, models) {
             for (var n = 0; n <= 8; n++) {
                 var squareView = new SquareView();
                 var square = new Square();
@@ -59,26 +49,27 @@ define(["require", "exports", 'App/View/AppView', 'App/Model/Grid', 'App/Present
             }
         };
 
-        GridFactory.prototype.generateGridSquares = function (depth, views, models) {
-            for (var n = 0; n <= 8; n++) {
-                var squareViews = new Array(9);
-                var squareModels = new Array(9);
-
-                this.generateSquares(depth - 1, squareViews, squareModels);
-
-                var gridView = new GridView(squareViews);
-                var grid = new Grid(squareModels);
-
-                var presenter = new GridPresenter(gridView, grid);
-
-                views[n] = gridView;
-                models[n] = grid;
-            }
+        GridModelFactory.prototype.generateGridSquares = function (depth, views, models) {
+            /*for (var n = 0; n <= 8; n++) {
+            
+            var squareViews: ISquareView[] = new Array(9);
+            var squareModels: ISquare[] = new Array(9);
+            
+            this.generateSquares(depth - 1, squareViews, squareModels);
+            
+            var gridView = new GridView(squareViews);
+            // var grid = new Grid(squareModels);
+            
+            var presenter = new GridPresenter(gridView, grid);
+            
+            views[n] = gridView;
+            models[n] = grid;
+            }*/
         };
-        return GridFactory;
+        return GridModelFactory;
     })();
 
     
-    return GridFactory;
+    return GridModelFactory;
 });
-//# sourceMappingURL=GridFactory.js.map
+//# sourceMappingURL=GridModelFactory.js.map

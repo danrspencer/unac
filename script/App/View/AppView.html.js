@@ -1,12 +1,7 @@
 define(["require", "exports"], function(require, exports) {
-    /// <reference path="../../Vendor/jquery.d.ts" />
-    /// <reference path="../../Vendor/underscore.d.ts" />
-    /// <reference path="../../Vendor/underscore-typed.d.ts" />
-    var html = 'Unac' + '<div class="gridContainer">' + '</div>';
-
-    var template = _.template(html);
-
-    
-    return template;
+    function getHtml() {
+        return '<h1>Ultimate 0 & X</h1><div class="gridContainer">    <%= test %></div>';
+    }
+    exports.getHtml = getHtml;
 });
 //# sourceMappingURL=AppView.html.js.map

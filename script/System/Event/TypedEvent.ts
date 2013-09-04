@@ -18,13 +18,17 @@ class TypedEvent implements IEvent {
     );
   }
 
-  public remove (listener?: () => void): void {
+  public remove(listener?: () => void): void {
     for (var i = 0, l = this._listeners.length; i < l; l++) {
       if (this._listeners[i].callback == listener) {
         this._listeners.splice(i, 1);
         break;
       }
     }
+  }
+
+  public count() {
+    return this._listeners.length;
   }
 
   public removeAll(): void {

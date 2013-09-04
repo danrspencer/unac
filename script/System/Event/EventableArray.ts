@@ -4,7 +4,7 @@ import IArrayEvent = require('System/Event/IArrayEvent');
 import IArrayItemEvent = require('System/Event/IArrayItemEvent');
 import IArrayItemsEvent = require('System/Event/IArrayItemsEvent');
 
-export class EventableArray<T> implements Array<T> {
+class EventableArray<T> implements Array<T> {
 
   public length: number;
 
@@ -21,7 +21,7 @@ export class EventableArray<T> implements Array<T> {
   public arrayReset: IArrayEvent<T>;
 
   constructor() {
-
+    this._array = [];
   }
 
   public set(array: T[]) {
@@ -154,6 +154,4 @@ export class EventableArray<T> implements Array<T> {
   }
 }
 
-// Exporting as module for now to get around Typescript bug
-// https://typescript.codeplex.com/workitem/1294
-//export = EventableArray;
+export = EventableArray;

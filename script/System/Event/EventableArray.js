@@ -6,6 +6,7 @@ define(["require", "exports", 'System/Event/TypedEvent'], function(require, expo
 
     var EventableArray = (function () {
         function EventableArray() {
+            this._array = [];
         }
         EventableArray.prototype.set = function (array) {
             this._array = array;
@@ -143,6 +144,8 @@ define(["require", "exports", 'System/Event/TypedEvent'], function(require, expo
         };
         return EventableArray;
     })();
-    exports.EventableArray = EventableArray;
+
+    
+    return EventableArray;
 });
 //# sourceMappingURL=EventableArray.js.map

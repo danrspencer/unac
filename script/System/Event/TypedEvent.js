@@ -21,6 +21,10 @@ define(["require", "exports"], function(require, exports) {
             }
         };
 
+        TypedEvent.prototype.count = function () {
+            return this._listeners.length;
+        };
+
         TypedEvent.prototype.removeAll = function () {
             this._listeners = [];
         };

@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "test": "lobo --framework=elm-test"
+  },
+  "devDependencies": {
+    "create-elm-app": "^1.10.4",
+    "elm-analyse": "^0.14.2",
+    "elm-format": "^0.6.1-alpha",
+    "lobo": "^0.4.3",
+    "lobo-cli": "^0.0.2"
+  }
+}
